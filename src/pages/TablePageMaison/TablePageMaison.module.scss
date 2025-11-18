@@ -1,0 +1,63 @@
+@use '../../../src/assets/color' as variable; // J'assume que _color.scss est dans src/styles/
+@use 'sass:color';
+
+.tablePageMaisonsContainer {
+  padding: 1rem;
+}
+
+.headerSection {
+  display: flex;
+  justify-content: space-between; // Pousse le bouton à droite
+  align-items: center;
+  border-bottom: 1px solid variable.$color-border;
+  margin-bottom: 20px;
+  padding-bottom: variable.$padding-bottom-title;
+}
+
+.pageTitle {
+  font-size: variable.$font-size-title;
+  color: variable.$color-secondary;
+  margin: 0; // Annule la marge par défaut du h2 pour un meilleur contrôle
+}
+
+.addButton {
+  background-color: variable.$color-primary;
+  color: variable.$color-text-light;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: variable.$font-size;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: color.adjust(variable.$color-primary, $lightness: 8%);
+  }
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+
+  // Modificateur pour l'état visible
+  &.visible {
+    background-color: #28a745; // Un vert plus doux
+  }
+
+  // Modificateur pour l'état non visible
+  &.notVisible {
+    background-color: #dc3545; // Un rouge standard
+  }
+}
+
+
+
+
+

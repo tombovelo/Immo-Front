@@ -1,0 +1,134 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.card {
+  background-color: #fff;
+  border-radius: 12px; // Bords plus arrondis pour un look moderne
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid variable.$color-border;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: variable.$color-background-light;
+  border-bottom: 1px solid variable.$color-border;
+
+  .ville {
+    font-weight: 600;
+    color: variable.$color-text-primary;
+    margin: 0;
+  }
+}
+
+.transactionBadge {
+  background-color: variable.$color-secondary;
+  color: variable.$color-text-light;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.addressOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  
+  // Style directement l'IconText pour un texte blanc sur l'overlay
+  color: variable.$color-text-light;
+  > div { // Cible le conteneur interne de IconText
+    > span > svg { // Cible l'icône
+      color: variable.$color-text-light;
+    }
+  }
+}
+
+.cardBody {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-grow: 1;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: variable.$color-primary;
+  margin: 0 0 0.5rem 0;
+}
+
+.statsGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid variable.$color-border;
+  color: variable.$color-text-secondary;
+  font-size: 0.9rem;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  align-self: flex-start; // Pour que le badge ne prenne que sa largeur
+  margin-top: 0.25rem;
+
+  &.visible {
+    background-color: color.change(variable.$color-success, $alpha: 0.15);
+    color: color.adjust(variable.$color-success, $lightness: -15%);
+    svg { color: color.adjust(variable.$color-success, $lightness: -15%); }
+  }
+
+  &.hidden {
+    background-color: color.change(variable.$color-error, $alpha: 0.1);
+    color: color.adjust(variable.$color-error, $lightness: -10%);
+    svg { color: color.adjust(variable.$color-error, $lightness: -10%); }
+  }
+}
+
+.cardFooter {
+  padding: 0 1rem 1rem;
+  margin-top: auto; // Pousse le footer en bas de la carte
+
+  button {
+    width: 100%; // Le bouton prend toute la largeur
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: variable.$font-size; // Taille de l'icône
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: variable.$color-primary; // Couleur au survol
+    background-color: color.adjust(variable.$color-background-light, $lightness: -2%);
+  }
+}
+

@@ -1,0 +1,29 @@
+.locateControl {
+    position: absolute;
+    top: 80px; // Vous pouvez ajuster cette valeur
+    left: 10px;
+    z-index: 1000; // Pour s'assurer qu'il est au-dessus des autres éléments
+
+    @media screen and (max-width: 900px) {
+        top: 6px; // Vous pouvez ajuster cette valeur
+        left: 20px;
+    }
+
+    button {
+        background-color: #fff;
+        border: 2px solid rgba(0,0,0,0.2);
+        border-radius: 4px;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #333;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+}

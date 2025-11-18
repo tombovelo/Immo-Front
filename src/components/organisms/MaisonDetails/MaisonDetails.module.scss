@@ -1,0 +1,251 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+// --- Conteneur principal de la page ---
+.pageWrapper {
+    background-color: variable.$color-background-light;
+    box-sizing: border-box; // Assure que le padding est inclus dans la largeur
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+
+    @media (max-width: 900px) {
+        margin: 0;
+        padding: 1rem;
+        width: 100%; 
+    }
+}
+
+// --- En-tête de page (Titre + Bouton Modifier) ---
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid variable.$color-border;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    gap: 1rem;
+
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: variable.$color-text-primary;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: flex-start;
+        h1 { font-size: 1.8rem; }
+    }
+}
+
+// --- Boutons d'action principaux ---
+.actionButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: variable.$color-primary;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    @media screen and (max-width: 900px){
+        font-size: 0.8rem;
+    }
+
+    &:hover {
+        background-color: color.adjust(variable.$color-primary, $lightness: -8%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(variable.$color-primary, 0.3);
+    }
+}
+
+// --- Grille principale (Image | Infos) ---
+.mainGrid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// --- Galerie d'images ---
+.imageGallery {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    .mainImage {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        display: block;
+
+        @media (max-width: 900px) {
+            height: 320px;
+        }
+    }
+}
+
+.transactionBadge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(variable.$color-secondary, 0.8);
+    backdrop-filter: blur(5px);
+    color: variable.$color-text-light;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// --- Carte Résumé (Prix, Stats, Description) ---
+.summaryCard {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+
+    .price {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: variable.$color-primary;
+        margin: 0 0 1.5rem 0;
+        line-height: 1;
+        border-bottom: 1px solid variable.$color-border;
+        padding-bottom: 1.5rem;
+
+        @media screen and (max-width: 900px) {
+            font-size: 1.8rem;
+        }
+    }
+
+    .statsGrid {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        color: variable.$color-text-secondary;
+
+        svg {
+            color: variable.$color-primary;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .description {
+        h3 { margin: 0 0 0.5rem 0; }
+        p {
+            color: variable.$color-text-secondary;
+            line-height: 1.7;
+            margin: 0;
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease-in-out;
+
+            &.expanded {
+                max-height: 1000px;
+            }
+        }
+    }
+
+    .expandButton {
+        background: none;
+        border: none;
+        color: variable.$color-primary;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+        align-self: flex-start;
+    }
+}
+
+// --- Carte Propriétaire ---
+.ownerCard {
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    margin-bottom: 2.5rem;
+
+    .ownerDetails {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.5rem 2rem;
+        color: variable.$color-text-secondary;
+        p { margin: 0.5rem 0; }
+        a {
+            color: variable.$color-primary;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+        }
+    }
+}
+
+// --- Section Albums ---
+.albumsSection {
+    .albumsHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            color: variable.$color-text-primary;
+            margin: 0;
+
+            @media  screen and (max-width: 900px){
+                font-size: 0.8rem;
+                
+            }
+        }
+    }
+    .albumsList {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1.5rem;
+    }
+    .noAlbums {
+        background-color: #fff;
+        padding: 2rem;
+        text-align: center;
+        color: variable.$color-text-secondary;
+        border-radius: 8px;
+        border: 1px dashed variable.$color-border;
+    }
+}
+
+.ownerHeader {
+    border-bottom: 1px solid variable.$color-border;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 900px) {
+        font-size: 0.5rem;
+    }
+}

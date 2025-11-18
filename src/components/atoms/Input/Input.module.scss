@@ -1,0 +1,33 @@
+@use '../../../assets/color' as variable; // Importation de vos variables de couleur
+@use 'sass:color';
+
+.input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid variable.$color-border;
+  border-radius: 5px;
+  font-size: variable.$font-size;
+  color: variable.$color-text-primary;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  // Style pour le texte de l'placeholder
+  &::placeholder {
+    color: variable.$color-text-disabled;
+  }
+
+  // Style lorsque le champ est en focus (cliqué)
+  &:focus {
+    outline: none;
+    border-color: variable.$color-primary;
+    // box-shadow: 0 0 0 3px lighten(variable.$color-primary, 35%); // Ajoute un halo de couleur
+    box-shadow: 0 0 0 3px color.adjust(variable.$color-primary, $lightness: 35%); // Ajoute un halo de couleur
+  }
+
+  // Style lorsque le champ est désactivé
+  &:disabled {
+    background-color: variable.$color-disabled;
+    color: variable.$color-text-disabled;
+    cursor: not-allowed;
+  }
+}

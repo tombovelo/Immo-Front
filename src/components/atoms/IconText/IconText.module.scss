@@ -1,0 +1,25 @@
+@use '../../../assets/color' as color;
+
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: color.$gap;
+}
+
+.icon {
+  font-size: color.$font-size;
+  display: flex;
+  align-items: center;
+  color: color.$color-text-secondary;
+}
+
+.text {
+  line-height: 1;
+  color: color.$color-text-primary;
+  font-size: color.$font-size;
+}
+
+
+
+

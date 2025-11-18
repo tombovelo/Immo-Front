@@ -1,0 +1,161 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 1rem; // Ajoute un espace sur les petits écrans pour que la modale ne touche pas les bords
+}
+
+.modal {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    width: 100%; // La modale prend toute la largeur disponible...
+    max-width: 1100px; // ...jusqu'à une largeur maximale
+    max-height: 90vh; // Hauteur maximale pour laisser de l'espace vertical
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid variable.$color-border;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    flex-shrink: 0; // Empêche l'en-tête de se réduire
+
+    h2 {
+        margin: 0;
+        color: variable.$color-secondary;
+        // Gère les titres d'album trop longs
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 1rem;
+    }
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: variable.$color-text-secondary;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: variable.$color-error;
+    }
+}
+
+.gallery {
+    overflow-y: auto; // Active le défilement vertical si nécessaire
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem 0.5rem 1rem 0; // Espace intérieur, avec un peu moins à droite pour la barre de défilement
+    flex-grow: 1; // Fait en sorte que la galerie prenne tout l'espace vertical restant
+    min-height: 0px; // Correction nécessaire pour le défilement dans un conteneur flex
+    cursor: grab;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.photoCard {
+    position: relative;
+    border: 1px solid variable.$color-border;
+    border-radius: 6px;
+    //overflow: hidden;
+    background-color: variable.$color-background-light;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    img {
+        width: 100%;
+        min-height: 160px;
+        object-fit: cover;
+        height: 100%;
+    }
+
+    p {
+        margin: 0;
+        padding: 0.75rem;
+        font-size: 0.85rem;
+        color: variable.$color-text-secondary;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .actionButtons {
+        display: flex;
+        gap: variable.$gap;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+
+        .deleteButton {
+            &:hover {
+                color: red;
+            }
+        }
+
+        .editButton, .deleteButton {
+            background-color: white;
+        }
+    }
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // gap: 0.5rem;
+    // Pour s'assurer que ce conteneur ne devient pas trop large et pousse le bouton de fermeture
+    min-width: 0;
+}
+
+.Button {
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out; // Transition sur le fond
+    background-color: variable.$color-primary;
+    padding: 0.5rem;
+    border-radius: 10px;
+
+    &:hover {
+        // La couleur du texte est blanche (via les props), on change donc le fond au survol
+        background-color: color.adjust(variable.$color-primary, $lightness: -10%);
+    }
+}
+
+.photoCard {
+    /* Ajoutez ces transitions pour une animation fluide */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform-origin: center;
+  
+    /* Classe qui sera ajoutée pour déclencher l'animation de suppression */
+    &.deleting {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+  

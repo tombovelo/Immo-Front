@@ -1,0 +1,80 @@
+// .grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+//     gap: 1rem;
+//   }
+  
+//   .info {
+//     color:#6b7280;
+//     text-align:center;
+//     padding:2rem;
+//   }
+  
+//   .infoError {
+//     color:#dc2626;
+//     text-align:center;
+//     padding:2rem;
+//   }
+
+//   @media screen and (max-width: 750px){
+//     .grid {
+//       display: flex;
+//       flex-direction: column;
+//     }
+//   }
+
+@use '../../../assets/color' as color;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem; // Un peu plus d'espace entre les cartes
+}
+
+.info {
+    color: color.$color-text-secondary; // Utilisation de la variable pour le texte d'information
+    text-align: center;
+    padding: 2rem;
+}
+
+.infoError {
+    color: color.$color-error; // Utilisation de la variable pour le texte d'erreur
+    text-align: center;
+    padding: 2rem;
+}
+
+.viewToggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid color.$color-border;
+      background-color: #fff;
+      color: color.$color-text-secondary;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+  
+      &.active {
+        background-color: color.$color-primary;
+        color: #fff;
+        border-color: color.$color-primary;
+      }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+  

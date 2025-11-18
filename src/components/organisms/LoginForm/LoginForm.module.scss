@@ -1,0 +1,47 @@
+@use '../../../assets/color' as variable; // Import your centralized color variables
+
+.form {
+  // background: variable.$color-background-light; // Using the light background color
+  background: linear-gradient(180deg, white 0%, rgba(variable.$color-primary, 0.1) 100%);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;          // occupe 90% sur petit écran
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: variable.$font-size-title;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: variable.$margin-bottom-title;
+  padding-bottom: variable.$padding-bottom-title;
+  border-bottom: 1px solid variable.$color-border;
+}
+
+.error {
+  color: variable.$color-error; // Using the defined error color
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.loginPrompt {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: variable.$color-text-secondary;
+}
+
+.loginLink {
+  color: variable.$color-primary; // Utilisez votre variable de couleur primaire
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+

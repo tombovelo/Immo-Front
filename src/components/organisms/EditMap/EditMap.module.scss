@@ -1,0 +1,85 @@
+@use '../../../assets/color' as variable;
+
+.mapContainer { // ce style est surchwrger du foter parent
+    z-index: 1;
+    border-radius: 8px;
+    border: 1px solid variable.$color-border;
+}
+
+// Styles for the popup content, inspired by MaisonCard
+.popupContent {
+    width: 240px; // A bit wider for more content
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    // Leaflet adds its own padding, so we don't need extra padding here.
+}
+
+.popupImage {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: variable.$color-disabled;
+}
+
+.villeTransaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid variable.$color-border;
+
+    .ville {
+        font-weight: 600;
+        color: variable.$color-text-primary;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    .typeTransaction {
+        background-color: variable.$color-secondary;
+        color: variable.$color-text-light;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin: 0;
+    }
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+/* Styles mobiles pour le composant Map */
+@media screen and (max-width: 900px) {
+    .container {
+        padding: 0.25rem;
+    }
+
+    :global(.leaflet-top.leaflet-left) {
+        top: auto !important;
+        bottom: 2.5rem !important;
+        left: auto !important;
+        right: 0.625rem !important;
+        display: flex !important;
+        flex-direction: column-reverse !important;
+    }
+
+    :global(.leaflet-control-zoom) {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+}

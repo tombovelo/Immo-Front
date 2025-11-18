@@ -1,0 +1,15 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.row {
+  transition: background-color 0.2s ease;
+  
+  &[onclick] {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: color.adjust(variable.$color-background-light, $lightness: -3%);
+  }
+}
+

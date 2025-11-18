@@ -1,0 +1,94 @@
+//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+// * {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   font-family: 'Inter', sans-serif;
+//   /* ➡️ Cela indique au navigateur que tous les défilements (scroll) sur la page doivent être progressifs et animés, */
+//   scroll-behavior: smooth;
+// }
+
+// body {
+//   min-height: 100vh;
+// }
+
+// a {
+//   text-decoration: none;
+//   color: inherit
+// }
+
+
+// ul {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+// }
+
+// .app {
+//   width: 90%;
+//   margin: auto auto;
+//   background: #f3f4f6; /* fond sombre */
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+  
+// }
+
+///////////////////////////////////////////////////////
+// 1. Importation de vos variables globales
+@use './assets/color' as color;
+
+// Optionnel : Importez une police depuis Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// 2. Reset CSS et styles de base
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;   /* Pour Firefox */
+  -ms-overflow-style: none;
+}
+
+html {
+  font-size: 16px; // Base pour les unités rem
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  // background-color: color.$color-background-light;
+   // Dégradé subtil du blanc vers une teinte de la couleur primaire
+   background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
+  color: color.$color-text-primary;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 3. Style pour le conteneur principal de l'application
+// Ceci, combiné au `margin-top: auto` de votre Footer,
+// permet de créer un "sticky footer".
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// 4. Style global pour les liens (optionnel)
+a {
+  color: color.$color-primary;
+  text-decoration: none;
+}
+
+

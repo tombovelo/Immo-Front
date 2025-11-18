@@ -1,0 +1,33 @@
+@use '../../../assets/color' as color;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem; // Espace entre l'aperçu et le champ input
+}
+
+.previewImage {
+  position: absolute;
+  right: 4px;
+  height: 36px;
+  width: 50px;
+  align-items: center;
+  justify-content: flex-end;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0; // Empêche l'image de rétrécir si l'espace manque
+}
+
+.error {
+  color: color.$color-error;
+  font-size: color.$font-size-error;
+  margin-top: 4px;
+}
+

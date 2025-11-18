@@ -1,0 +1,34 @@
+@use '../../../assets/color' as variable;
+
+
+.container {
+    width: 100%;
+    height: 650px;
+
+    @media screen and (max-width: 900px) {
+        max-height: 1200px;
+    }
+}
+
+/* Styles mobiles pour le composant Map */
+@media screen and (max-width: 900px) {
+    .container {
+        padding: 0.25rem;
+    }
+
+    :global(.leaflet-top.leaflet-left) {
+        top: auto !important;
+        bottom: 2.5rem !important;
+        left: auto !important;
+        right: 0.625rem !important;
+        display: flex !important;
+        flex-direction: column-reverse !important;
+    }
+
+    :global(.leaflet-control-zoom) {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+}
+

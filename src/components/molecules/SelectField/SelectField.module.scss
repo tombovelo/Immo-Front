@@ -1,0 +1,56 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.error {
+  color: variable.$color-error;
+  font-size: variable.$font-size-error;
+  margin-top: 4px;
+}
+
+// Styles globaux pour surcharger react-select
+// Le préfixe "custom-select" est défini dans le composant SelectField.jsx
+:global {
+  .custom-select__control {
+    min-height: 44px;
+    font-size: 0.8rem; // 16px pour éviter le zoom sur iOS
+    margin-top: 5px;
+    border: 1px solid variable.$color-border;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: variable.$color-primary;
+    }
+  }
+
+  .custom-select__control--is-focused {
+    border-color: variable.$color-primary !important;
+    box-shadow: 0 0 0 3px color.adjust(variable.$color-primary, $lightness: 35%) !important;
+  }
+
+  .custom-select__placeholder,
+  .custom-select__single-value {
+    text-align: center;
+    width: 100%;
+  }
+
+  .custom-select__option {
+    text-align: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .custom-select__option--is-focused {
+    background-color: color.adjust(variable.$color-primary, $lightness: 40%);
+  }
+
+  .custom-select__option--is-selected {
+    background-color: variable.$color-primary;
+    color: white;
+  }
+}

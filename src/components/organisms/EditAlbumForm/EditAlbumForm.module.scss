@@ -1,0 +1,57 @@
+// Assurez-vous que votre fichier de variables est importé, par exemple avec @use
+@use '../../../assets/color' as color;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: color.$gap;
+    width: 100%;
+  }
+  
+  // Styles du conteneur pour la version "autonome" (utilisée sur une page)
+  .standalone {
+    background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid color.$color-border;
+    max-width: 450px;
+  }
+  
+
+.houseInfo {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.houseInfoTitle {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: color.$color-text-primary;
+    border-bottom: 1px solid color.$color-border;
+    padding-bottom: color.$padding-bottom-title;
+}
+
+.houseDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: calc(color.$gap * 2); // Correspond à 1rem si $gap est 0.5rem
+}
+
+.houseImage {
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid color.$color-border;
+    width: 100%;
+}
+
+.houseAddress {
+    margin: 0;
+    font-size: 0.95rem;
+    color: color.$color-text-secondary;
+    font-weight: 500;
+}

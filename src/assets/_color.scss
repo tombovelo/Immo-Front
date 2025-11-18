@@ -1,0 +1,31 @@
+// --- Palette de Couleurs Principales ---
+
+// Couleurs de la marque
+$color-primary: #3498db;   // Bleu clair et vif, idéal pour les liens, boutons et accents.
+$color-secondary: #2c3e50; // Bleu ardoise foncé, parfait pour les headers, footers ou sections importantes.
+$color-accent: #e67e22;    // Orange carotte, pour les appels à l'action (CTA) qui doivent ressortir.
+
+// --- Couleurs de Fond ---
+$color-background-light: #f8f9fa; // Gris très clair, pour le fond principal du site.
+$color-background-dark: #343a40;  // Gris foncé, pour les sections sombres comme le footer.
+
+// --- Couleurs de Texte ---
+$color-text-primary: #212529;   // Presque noir, pour le corps du texte principal.
+$color-text-secondary: #6c757d; // Gris moyen, pour les textes secondaires, labels ou métadonnées.
+$color-text-light: #ecf0f1;     // Blanc cassé, pour le texte sur fonds sombres.
+$color-text-disabled: #adb5bd;  // NOUVEAU: Gris pour le texte des éléments désactivés.
+
+// --- Couleurs d'UI (Interface Utilisateur) ---
+$color-border: #dee2e6;         // Gris clair pour les bordures et séparateurs.
+$color-success: #2ecc71;        // Vert pour les messages de succès.
+$color-warning: #f1c40f;        // Jaune pour les avertissements.
+$color-error: #e74c3c;          // Rouge pour les messages d'erreur.
+$color-disabled: #e9ecef;       // NOUVEAU: Gris très clair pour le fond des éléments désactivés.
+
+// --- size ---------------
+$font-size : 0.8rem;
+$gap: 0.5rem;
+$font-size-error: 0.6rem;
+$margin-bottom-title: 0.5rem;
+$padding-bottom-title: 0.5rem;
+$font-size-title: 1.2rem;

@@ -1,0 +1,22 @@
+.mapWrapper {
+    flex-grow: 1; // Correction clé : permet à la carte de prendre tout l'espace restant
+    min-width: 0; // Empêche les problèmes de débordement avec flexbox
+    position: relative;
+    border-radius: 1rem; // Pour arrondir les coins de la carte
+    overflow: hidden; // Assure que la carte ne dépasse pas
+    padding: 1rem;
+    background-color: #f9f9f9;
+    min-height: calc(100vh - 120px);
+}
+
+// Conteneur interne de react-leaflet
+.map {
+    width: 100%;
+    height: 560px; // Hauteur pour la vue desktop
+    border: none;
+
+    @media screen and (max-width: 900px) {
+        height: 100%;
+        max-height: 1200px;
+    }
+}

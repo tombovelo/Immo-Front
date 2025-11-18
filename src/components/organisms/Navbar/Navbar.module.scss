@@ -1,0 +1,236 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+// --- Base de la Navbar ---
+.navbar {
+  background-color: variable.$color-secondary;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// --- Logo et Marque ---
+.navbarLogo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brandLink {
+  color: variable.$color-primary;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: variable.$color-text-light;
+  }
+}
+
+// --- Infos Propriétaire ---
+.proprietaireInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid variable.$color-primary;
+}
+
+.proprietaireName {
+  color: variable.$color-text-light;
+  font-weight: 500;
+}
+
+// --- Conteneur du Menu (pour le layout flex) ---
+.navbarMenuWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+// --- Liens de Navigation ---
+.navbarLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+  flex-grow: 1; // Permet de centrer les liens
+  padding: 0;
+  margin: 0;
+}
+
+.navbarLink {
+  color: variable.$color-text-light;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative; // Pour le pseudo-élément
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: variable.$color-primary;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  &.active {
+    color: variable.$color-primary;
+    font-weight: bold;
+  }
+}
+
+// --- Section Authentification ---
+.navbarAuth {
+  display: flex;
+  align-items: center;
+  gap: variable.$gap;
+  // justify-content: space-between;
+}
+
+.authButton {
+  color: variable.$color-text-light;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+  &:hover {
+    background-color: color.adjust(variable.$color-secondary, $lightness: 10%);
+  }
+
+  &.primary {
+    background-color: variable.$color-primary;
+    border-color: variable.$color-primary;
+
+    &:hover {
+      background-color: color.adjust(variable.$color-primary, $lightness: -5%);
+    }
+  }
+}
+
+.logoutButton {
+  background-color: transparent;
+  color: variable.$color-accent;
+  border: 1px solid variable.$color-accent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: variable.$color-accent;
+    color: variable.$color-text-light;
+  }
+}
+
+// --- Menu Burger (Mobile) ---
+.navbarBurger {
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 3001; // Doit être au-dessus du reste
+}
+
+.burgerBar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: variable.$color-text-light;
+  transition: all 0.3s ease-in-out;
+}
+
+// --- Styles Responsives ---
+@media screen and (max-width: 900px) {
+  .navbarMenuWrapper {
+    position: absolute;
+    top: 63px;
+    left: 0;
+    background-color: variable.$color-secondary;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  }
+
+  .navbarLinks, .navbarAuth {
+    width: 100%;
+    column-gap: 0.2rem;
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+  
+  .navbarLinks {
+    margin-bottom: 1rem;
+  }
+
+  .navbarItem {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbarLink {
+    display: block;
+    padding: 1rem;
+  }
+
+  .navbarBurger {
+    display: block;
+  }
+
+  // --- État ouvert du menu mobile ---
+  .showNavbar {
+    .navbarMenuWrapper {
+      max-height: 500px;
+      padding: 1rem;
+    }
+
+    .burgerBar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .burgerBar:nth-child(2) {
+      opacity: 0;
+    }
+    .burgerBar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}

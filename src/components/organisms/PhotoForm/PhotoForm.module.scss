@@ -1,0 +1,73 @@
+@use '../../../assets/color' as color;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: color.$gap;
+}
+
+// Styles du conteneur pour la version "autonome" (utilisée sur une page)
+.standalone {
+    background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid color.$color-border;
+    width: max(12vw, 400px);
+    margin: 2rem auto;
+  }
+
+.title {
+    font-size: color.$font-size-title;
+    font-weight: 600;
+    text-align: center;
+    color: color.$color-secondary; // Utilisation de la couleur secondaire pour le titre
+    margin-bottom: color.$margin-bottom-title;
+    padding-bottom: color.$padding-bottom-title;
+    border-bottom: 1px solid color.$color-border;
+}
+
+.previewContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.previewImage {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid color.$color-border; // Utilisation de la couleur de bordure
+}
+
+.message {
+    text-align: center;
+    font-weight: 500;
+    color: color.$color-text-secondary;
+}
+
+.houseInfoTitle {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: color.$color-text-primary;
+    border-bottom: 1px solid color.$color-border;
+    padding-bottom: color.$padding-bottom-title;
+}
+
+.houseImage {
+    // L'image prendra 100% de la largeur de son conteneur parent.
+    width: 100%;
+    // La hauteur s'ajustera automatiquement pour conserver les proportions.
+    height: auto;
+    // Bonne pratique pour que l'image se comporte comme un bloc et éviter les espaces indésirables.
+    display: block;
+    // Vos styles existants fonctionnent parfaitement avec cette configuration.
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid color.$color-border;
+}
+
+

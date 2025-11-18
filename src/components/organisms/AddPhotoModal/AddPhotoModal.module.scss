@@ -1,0 +1,63 @@
+@use '../../../assets/color' as variable;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 4000; // Doit être supérieur à la modale de la galerie
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem; // Ajoute un peu de padding pour éviter que la modale ne touche les bords sur mobile
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem; // Padding interne de la modale
+  outline: none;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid variable.$color-border;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: variable.$color-secondary;
+    }
+
+    .closeButton {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: variable.$color-text-secondary;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: variable.$color-error;
+      }
+    }
+  }
+
+  // Styles responsifs pour la modale elle-même
+  @media screen and (max-width: 750px) {
+    padding: 1.5rem;
+  }
+
+}

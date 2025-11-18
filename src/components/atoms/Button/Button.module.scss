@@ -1,0 +1,68 @@
+
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: variable.$font-size;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none; // Pour les cas où le bouton est un lien
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  // Style par défaut (bouton primaire)
+  background-color: variable.$color-primary;
+  color: variable.$color-text-light;
+
+  &:hover {
+    // background-color: darken($color-primary, 10%);
+    background-color: color.adjust(variable.$color-primary, $lightness: 10%)
+  }
+
+  // Style pour un bouton secondaire (par exemple, un bouton "Annuler")
+  &.secondary {
+    background-color: variable.$color-text-secondary;
+    color: variable.$color-text-light;
+
+    &:hover {
+      background-color: color.adjust(variable.$color-text-secondary, $lightness: 10%);
+    }
+  }
+
+  // Style pour un bouton d'accentuation (par exemple, un bouton "Ajouter" ou "Confirmer")
+  &.accent {
+    background-color: variable.$color-accent;
+    color: variable.$color-text-light;
+
+    &:hover {
+      background-color: color.adjust(variable.$color-accent, $lightness: 10%);
+    }
+  }
+
+  // Style pour un bouton avec un fond clair et une bordure
+  &.outline {
+    background-color: transparent;
+    color: variable.$color-primary;
+    border: 2px solid variable.$color-primary;
+
+    &:hover {
+      background-color: variable.$color-primary;
+      color: variable.$color-text-light;
+    }
+  }
+
+  // Style pour un bouton désactivé
+  &:disabled,
+  &.disabled {
+    background-color: variable.$color-disabled;
+    color: variable.$color-text-disabled;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+

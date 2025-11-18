@@ -1,0 +1,51 @@
+@use '../../../assets/color' as variable;
+
+.searchForm {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // Espace entre le titre, les rangées de champs et le bouton
+    width: 100%;
+}
+
+.formTitle {
+    font-size: 1.8rem;
+    color: variable.$color-text-primary;
+    text-align: center;
+    margin: 0;
+}
+
+.formRow {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    // Chaque champ dans la rangée prend une part égale de l'espace
+    > * {
+        flex: 1;
+        min-width: 0; // Nécessaire pour que flexbox réduise correctement les champs
+    }
+
+    // Sur les écrans de type tablette et mobile, on empile les champs
+    @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonRow > button {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+}
+

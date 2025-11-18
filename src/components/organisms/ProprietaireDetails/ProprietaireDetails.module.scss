@@ -1,0 +1,152 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.detailsContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    // max-width: 1200px;
+    margin: 2rem auto;
+
+    .header {
+        display: grid;
+        grid-template-columns: 2fr auto;
+        /* headerInfo prend l'espace restant, headerActions prend sa largeur */
+        align-items: center;
+        border-bottom: 1px solid variable.$color-border;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        gap: variable.$gap;
+
+        @media screen and (max-width: 846px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 1.5rem;
+        }
+
+        .infoProfile {
+            display: flex;
+            align-items: center;
+
+            // Empile l'image et le texte sur les petits écrans
+            @media screen and (max-width: 846px) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .profileImage {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border: 3px solid variable.$color-background-light;
+
+            // Ajuste les marges de l'image sur mobile
+            @media screen and (max-width: 846px) {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .headerInfo {
+            .name {
+                font-size: 2rem;
+                font-weight: bold;
+                margin: 0;
+                color: variable.$color-text-primary;
+            }
+
+            .role {
+                font-size: 1rem;
+                color: variable.$color-text-secondary;
+                margin: 0.25rem 0 0;
+                text-transform: capitalize;
+            }
+        }
+
+        .headerActions {
+            margin-left: auto;
+            // Ajuste la largeur et la marge du conteneur du bouton
+            @media screen and (max-width: 846px) {
+                margin-left: 0;
+                width: auto;
+            }
+
+            .Button {
+                cursor: pointer;
+                font-weight: 600;
+                transition: background-color 0.2s ease-in-out; // Transition sur le fond
+                background-color: variable.$color-primary;
+                padding: 0.5rem;
+                border-radius: 10px;
+                
+            
+                // Ajuste la largeur du bouton pour qu'il s'adapte à son contenu
+                @media screen and (max-width: 846px) {
+                    width: auto;
+                }
+
+                &:hover {
+                    background-color: color.adjust(variable.$color-primary, $lightness: 10%);
+                }
+            }
+        }
+    }
+
+    .infoGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .infoItem {
+            display: flex;
+            align-items: center;
+            background-color: variable.$color-background-light;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: variable.$font-size;
+            color: variable.$color-text-secondary;
+
+            .icon {
+                margin-right: 0.75rem;
+                color: variable.$color-primary;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .maisonsSection {
+        h2 {
+            display: flex;
+            align-items: center;
+            font-size: variable.$font-size-title;
+            color: variable.$color-text-primary;
+            border-bottom: 1px solid variable.$color-border;
+            padding-bottom: variable.$padding-bottom-title;
+            margin-bottom: 1.5rem;
+
+            .icon {
+                margin-right: 0.75rem;
+            }
+        }
+
+        .maisonsList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            @media screen and (max-width: 768px){
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    }
+}
+

@@ -1,0 +1,89 @@
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+// --- Structure de base commune à tous les liens ---
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: 1px solid transparent;
+}
+
+.text {
+  font-size: 0.8rem;
+}
+
+// .icon {
+//   flex-shrink: 0;
+// }
+
+// --- Variante #1: Style de lien simple (pour "Maisons", "Profil") ---
+.link {
+  color: variable.$color-text-light;
+  background-color: transparent;
+  position: relative;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: variable.$color-primary;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  &.active {
+    color: variable.$color-primary;
+    font-weight: bold;
+  }
+}
+
+// --- Variante #2: Style de bouton primaire (pour "S'inscrire", "Recherche", "Connecter") ---
+.primaryButton {
+  color: variable.$color-text-light;
+  background-color: variable.$color-primary;
+  border-color: variable.$color-primary;
+  padding: 0.6rem 1.2rem;
+
+  &:hover {
+    background-color: color.adjust(variable.$color-primary, $lightness: -5%);
+  }
+}
+
+// --- Variante #3: Style de bouton de déconnexion ---
+.logoutButton {
+  color: variable.$color-accent;
+  background-color: transparent;
+  border-color: variable.$color-accent;
+  padding: 0.6rem 1.2rem;
+
+  &:hover {
+    background-color: variable.$color-accent;
+    color: variable.$color-text-light;
+  }
+}
+
+// --- Styles Responsives ---
+@media screen and (max-width: 415px) {
+  .text {
+    font-size: 0.7rem;
+  }
+}
+

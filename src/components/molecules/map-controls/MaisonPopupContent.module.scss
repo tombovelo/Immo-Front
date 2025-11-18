@@ -1,0 +1,52 @@
+@use '../../../assets/color' as color; // Assurez-vous que ce chemin est correct
+
+.popupContent {
+    width: 250px;
+    font-family: sans-serif;
+
+    .popupImage {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+    }
+
+    .villeTransaction {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+
+        .ville {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: color.$color-text-primary;
+            margin: 0;
+        }
+
+        .typeTransaction {
+            background-color: color.$color-secondary;
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0;
+        }
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.3rem;
+    }
+}
+

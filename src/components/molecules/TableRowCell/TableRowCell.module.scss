@@ -1,0 +1,42 @@
+@use '../../../assets/color' as variable;
+
+.visible, .hidden {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+}
+
+.checkbox {
+    width: 1.2em; // Augmente la taille pour une meilleure visibilité et interaction.
+    height: 1.2em; // Utilise la couleur primaire de la marque pour la coche.
+    accent-color: variable.$color-primary; // C'est une propriété CSS moderne très pratique.
+    cursor: pointer; // Change le curseur pour indiquer que c'est un élément cliquable.
+    vertical-align: middle; // Centre la checkbox verticalement dans la cellule du tableau.
+}
+
+.visible {
+    background-color: variable.$color-success;
+}
+
+.hidden {
+    background-color: variable.$color-error;
+}
+
+.actionsCell {
+    text-align: center; // Centre les icônes dans la cellule
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: center; // Centre les boutons si la cellule est plus large
+    gap: 0.5rem; // Espacement entre les icônes
+}
+
+.deleteButton {
+    color: variable.$color-error;
+}
+

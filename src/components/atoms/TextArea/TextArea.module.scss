@@ -1,0 +1,52 @@
+// .textarea {
+//     padding: 0.5rem 1rem;
+//     border: 1px solid #d1d5db;
+//     border-radius: 8px;
+//     outline: none;
+//     transition: border-color 0.3s;
+//     width: 100%;
+//     font-size: max(1vw, 12px);
+//     // resize: vertical; // permet à l'utilisateur d'agrandir le champ verticalement
+//     min-height: 70px; // hauteur par défaut agréable
+  
+//     &:focus {
+//       border-color: #2563eb;
+//     }
+//   }
+
+@use '../../../assets/color' as variable;
+@use 'sass:color';
+
+.textarea {
+  width: 100%;
+  min-height: 60px; // Hauteur minimale pour une zone de texte
+  padding: 0.3rem 1rem;
+  border: 1px solid variable.$color-border;
+  border-radius: 5px;
+  font-size: variable.$font-size;
+  font-family: inherit; // Assure que la police est la même que le reste du site
+  color: variable.$color-text-primary;
+  background-color: #fff;
+  resize: vertical; // Permet à l'utilisateur de redimensionner verticalement
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: variable.$color-text-disabled;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: variable.$color-primary;
+    box-shadow: 0 0 0 3px color.adjust(variable.$color-primary, $lightness: 35%);
+  }
+
+  &:disabled {
+    background-color: variable.$color-disabled;
+    color: variable.$color-text-disabled;
+    cursor: not-allowed;
+    resize: none;
+  }
+}
+
+
+  

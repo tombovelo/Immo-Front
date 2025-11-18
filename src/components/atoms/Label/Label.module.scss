@@ -1,0 +1,10 @@
+@use '../../../assets/color' as color;
+
+.label {
+  display: block; // Pour que le label se place au-dessus de l'input
+  margin-bottom: 0.4rem;
+  font-size: color.$font-size;
+  font-weight: 500; // Un peu plus gras pour se démarquer
+  color: color.$color-text-secondary; // Couleur de texte secondaire pour un look professionnel
+}
+  
