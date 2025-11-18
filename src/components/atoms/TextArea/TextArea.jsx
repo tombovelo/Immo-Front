@@ -1,4 +1,4 @@
-import styles from "./Textarea.module.scss";
+import styles from "./TextArea.module.scss";
 
 export default function Textarea({ value, onChange, ...props }) {
   return (
