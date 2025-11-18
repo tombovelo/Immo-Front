@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import MaisonCard from "../../molecules/MaisonCard/MaisonCard";
 import styles from "./MaisonList.module.scss";
-import SearchForm from "../searchForm/searchForm";
+import SearchForm from "../SearchForm/SearchForm";
 import MaisonListMap from "../MaisonListMap/MaisonListMap";
 import { FaList, FaMap } from "react-icons/fa";
 import { searchHouseAPI } from "../../../services/MaisonService";
