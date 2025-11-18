@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './PhotoPlaceholder.module.scss';
+import styles from './PhotoPlaceHolder.module.scss';
 import { FaImage } from 'react-icons/fa';
 
 const PhotoPlaceholder = () => {
