@@ -18,7 +18,7 @@
 :global {
   .custom-select__control {
     min-height: 44px;
-    font-size: 0.8rem; // 16px pour éviter le zoom sur iOS
+    font-size: variable.$font-size; // 16px pour éviter le zoom sur iOS
     margin-top: 5px;
     border: 1px solid variable.$color-border;
     box-shadow: none !important;
@@ -43,6 +43,7 @@
   .custom-select__option {
     text-align: center;
     transition: background-color 0.2s ease;
+    font-size: variable.$font-size;
   }
 
   .custom-select__option--is-focused {

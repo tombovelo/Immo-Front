@@ -60,7 +60,7 @@
 }
 
 html {
-  font-size: 16px; // Base pour les unités rem
+  font-size: 16px; // Base pour les unités rem sur desktop
 }
 
 body {
@@ -91,4 +91,27 @@ a {
   text-decoration: none;
 }
 
+// 5. Styles responsives globaux
+@media (max-width: 900px) {
+  html {
+    font-size: 15px; // Réduit la base pour les tablettes et grands téléphones
+  }
+}
 
+@media (max-width: 600px) {
+  html {
+    font-size: 14px; // Réduit encore la base pour les petits téléphones
+  }
+}
+
+@media (max-width: 415px) {
+  html {
+    font-size: 12px; // Réduit encore la base pour les petits téléphones
+  }
+}
+
+@media (max-width: 345px) {
+  html {
+    font-size: 11px; // Réduit encore la base pour les petits téléphones
+  }
+}

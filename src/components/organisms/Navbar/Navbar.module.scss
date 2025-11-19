@@ -125,6 +125,7 @@
   border: 1px solid transparent;
   transition: all 0.3s ease;
   font-weight: 500;
+  font-size: variable.$font-size;
 
   &:hover {
     background-color: color.adjust(variable.$color-secondary, $lightness: 10%);
@@ -148,7 +149,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: variable.$font-size;
   transition: all 0.3s ease;
 
   &:hover {

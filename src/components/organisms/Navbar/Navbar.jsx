@@ -64,22 +64,23 @@ const Navbar = () => {
                   Profil
                 </MyNavLink>
               </li>
+              <li className={styles.navbarItem}>
+                <MyNavLink
+                  to="#"
+                  icon={FaSignOutAlt}
+                  variant="logoutButton"
+                  onClick={handleLogout}
+                >
+                  Déconnexion
+                </MyNavLink>
+              </li>
             </>
           )}
         </ul>
 
         {/* Authentification */}
         <div className={styles.navbarAuth}>
-          {role === 'proprietaire' ? (
-            <MyNavLink
-              to="#"
-              icon={FaSignOutAlt}
-              variant="logoutButton"
-              onClick={handleLogout}
-            >
-              Déconnexion
-            </MyNavLink>
-          ) : (
+          {role === 'user' && (
             <>
               <MyNavLink to="/register" icon={FaUserPlus} variant="primaryButton" onClick={closeMobileMenu}>
                 S'inscrire

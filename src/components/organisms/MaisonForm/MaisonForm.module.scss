@@ -31,6 +31,10 @@
         margin-bottom: color.$margin-bottom-title;
         padding-bottom: color.$padding-bottom-title;
         border-bottom: 1px solid color.$color-border;
+
+        @media screen and (max-width: 900px) {
+            font-size: 0.1rem;
+        }
     }
 
     .multiFields {
@@ -84,6 +88,7 @@
             height: 250px; // Hauteur ajustée pour la carte sur mobile
             border-radius: 0.5rem;
         }
+        
         .mapWrapper {
             padding: 0.25rem; // Réduit le padding pour le conteneur de la carte sur mobile
         }

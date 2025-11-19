@@ -12,17 +12,13 @@
   padding: 0.6rem 1rem;
   border-radius: 5px;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: variable.$font-size;
   border: 1px solid transparent;
 }
 
-.text {
-  font-size: 0.8rem;
+.icon {
+  flex-shrink: 0;
 }
-
-// .icon {
-//   flex-shrink: 0;
-// }
 
 // --- Variante #1: Style de lien simple (pour "Maisons", "Profil") ---
 .link {
