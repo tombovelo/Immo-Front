@@ -1,42 +1,68 @@
-@use '../../../assets/color' as variable;
+// src/components/atoms/TableRowCell/TableRowCell.module.scss
 
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color'; // Nécessaire pour color.adjust si utilisé
+
+// --- Styles pour les badges de statut (visible/hidden) ---
 .visible, .hidden {
-    padding: 0.25rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #fff;
+    padding: v.$spacing-xxs v.$spacing-sm; // Padding pour un badge compact
+    border-radius: v.$border-radius-full; // Forme de pilule
+    font-size: v.$font-size-xs; // Petite taille de police
+    font-weight: v.$font-weight-semibold; // Graisse semi-épaisse
+    color: v.$color-text-light; // Texte clair sur fond coloré
     display: inline-block;
     text-align: center;
 }
 
-.checkbox {
-    width: 1.2em; // Augmente la taille pour une meilleure visibilité et interaction.
-    height: 1.2em; // Utilise la couleur primaire de la marque pour la coche.
-    accent-color: variable.$color-primary; // C'est une propriété CSS moderne très pratique.
-    cursor: pointer; // Change le curseur pour indiquer que c'est un élément cliquable.
-    vertical-align: middle; // Centre la checkbox verticalement dans la cellule du tableau.
-}
-
 .visible {
-    background-color: variable.$color-success;
+    background-color: v.$color-success;
 }
 
 .hidden {
-    background-color: variable.$color-error;
+    background-color: v.$color-error;
 }
 
+// --- Styles pour la checkbox ---
+.checkbox {
+    width: v.$font-size-lg; // Taille de la checkbox (ex: 18px)
+    height: v.$font-size-lg; // Taille de la checkbox
+    accent-color: v.$color-primary; // Couleur de la coche
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+// --- Styles pour la cellule d'actions ---
 .actionsCell {
-    text-align: center; // Centre les icônes dans la cellule
+    text-align: center; // Centre les éléments dans la cellule
 }
 
+// --- Styles pour le conteneur des boutons d'action ---
 .actionButtons {
     display: flex;
-    justify-content: center; // Centre les boutons si la cellule est plus large
-    gap: 0.5rem; // Espacement entre les icônes
+    justify-content: center; // Centre les boutons
+    gap: v.$spacing-xs; // Espacement entre les boutons
 }
 
+// --- Style spécifique pour le bouton de suppression ---
 .deleteButton {
-    color: variable.$color-error;
+    color: v.$color-error; // Utilise la couleur d'erreur
+    // Les autres styles (padding, font-size, etc.) viendront de IconButton
 }
 
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+    .visible, .hidden {
+        padding: v.$spacing-xxs v.$spacing-xs; // Padding encore plus réduit
+        font-size: v.$font-size-xs; // Taille de police très petite
+    }
+
+    .checkbox {
+        width: v.$font-size-base; // Taille légèrement réduite
+        height: v.$font-size-base;
+    }
+
+    .actionButtons {
+        gap: v.$spacing-xxs; // Espacement réduit entre les boutons
+    }
+}

@@ -1,49 +1,6 @@
-//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
-
-// * {
-//   padding: 0;
-//   margin: 0;
-//   box-sizing: border-box;
-//   font-family: 'Inter', sans-serif;
-//   /* ➡️ Cela indique au navigateur que tous les défilements (scroll) sur la page doivent être progressifs et animés, */
-//   scroll-behavior: smooth;
-// }
-
-// body {
-//   min-height: 100vh;
-// }
-
-// a {
-//   text-decoration: none;
-//   color: inherit
-// }
-
-
-// ul {
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-// }
-
-// .app {
-//   width: 90%;
-//   margin: auto auto;
-//   background: #f3f4f6; /* fond sombre */
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-  
-// }
-
 ///////////////////////////////////////////////////////
 // 1. Importation de vos variables globales
-@use './assets/color' as color;
+@use './assets/variables' as styles;
 
 // Optionnel : Importez une police depuis Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -60,18 +17,15 @@
 }
 
 html {
-  font-size: 16px; // Base pour les unités rem sur desktop
+  font-size: 14px; // Base pour les unités rem sur desktop
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  // background-color: color.$color-background-light;
-   // Dégradé subtil du blanc vers une teinte de la couleur primaire
-   background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
-  color: color.$color-text-primary;
-  line-height: 1.5;
+  font-family: styles.$font-family-primary;
+  // Dégradé subtil du blanc vers une teinte de la couleur primaire
+  background: linear-gradient(180deg, white 0%, rgba(styles.$color-primary, 0.1) 100%);
+  color: styles.$color-text-primary;
+  line-height: styles.$line-height-body;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -87,31 +41,34 @@ body {
 
 // 4. Style global pour les liens (optionnel)
 a {
-  color: color.$color-primary;
+  color: styles.$color-primary;
   text-decoration: none;
 }
 
 // 5. Styles responsives globaux
-@media (max-width: 900px) {
+// Utilisation des variables de breakpoints pour la cohérence
+@media (max-width: styles.$breakpoint-lg) { // 992px
   html {
-    font-size: 15px; // Réduit la base pour les tablettes et grands téléphones
+    font-size: 13px; // Réduit la base pour les tablettes et grands téléphones
   }
 }
 
-@media (max-width: 600px) {
-  html {
-    font-size: 14px; // Réduit encore la base pour les petits téléphones
-  }
-}
-
-@media (max-width: 415px) {
+@media (max-width: styles.$breakpoint-sm) { // 576px
   html {
     font-size: 12px; // Réduit encore la base pour les petits téléphones
   }
 }
 
+// Les breakpoints ci-dessous sont très spécifiques et conservés tels quels.
+// Si ces tailles sont récurrentes, envisagez de créer des variables dédiées.
+@media (max-width: 415px) {
+  html {
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 345px) {
   html {
-    font-size: 11px; // Réduit encore la base pour les petits téléphones
+    font-size: 10px;
   }
 }

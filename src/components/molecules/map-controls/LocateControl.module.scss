@@ -1,29 +1,56 @@
+// src/components/organisms/Map/LocateControl.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+
 .locateControl {
-    position: absolute;
-    top: 80px; // Vous pouvez ajuster cette valeur
-    left: 10px;
-    z-index: 1000; // Pour s'assurer qu'il est au-dessus des autres éléments
+  // --- Positionnement ---
+  position: absolute;
+  top: 80px; // Vous pouvez ajuster cette valeur
+  left: 10px;
+  z-index: v.$z-index-sticky; // Assure qu'il est au-dessus de la carte
 
-    @media screen and (max-width: 900px) {
-        top: 6px; // Vous pouvez ajuster cette valeur
-        left: 20px;
+  button {
+    // --- Structure et apparence ---
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // On utilise le padding pour définir la taille, c'est plus flexible
+    padding: v.$spacing-xs; 
+    background-color: v.$color-background-light;
+    border: v.$border-width-md solid v.$color-border;
+    border-radius: v.$border-radius-md;
+    box-shadow: v.$shadow-md;
+
+    // --- Typographie (pour l'icône) et couleur ---
+    font-size: v.$font-size-lg;
+    color: v.$color-text-primary;
+
+    // --- Comportement et animations ---
+    cursor: pointer;
+    transition: 
+      background-color v.$transition-speed-fast v.$transition-easing,
+      border-color v.$transition-speed-fast v.$transition-easing;
+
+    // --- États ---
+    &:hover {
+      background-color: v.$color-disabled;
+      border-color: v.$color-text-secondary;
     }
+  }
+}
 
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-lg) { // Utilise le breakpoint 992px
+  .locateControl {
+    // On le remonte et le décale pour ne pas gêner sur mobile
+    top: v.$spacing-sm;
+    left: v.$spacing-md;
+    
     button {
-        background-color: #fff;
-        border: 2px solid rgba(0,0,0,0.2);
-        border-radius: 4px;
-        width: 34px;
-        height: 34px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        color: #333;
-
-        &:hover {
-            background-color: #f4f4f4;
-        }
+      // Bouton plus compact sur mobile
+      padding: v.$spacing-xxs;
+      font-size: v.$font-size-base;
     }
+  }
 }

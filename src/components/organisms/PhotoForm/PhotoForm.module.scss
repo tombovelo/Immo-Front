@@ -1,73 +1,67 @@
-@use '../../../assets/color' as color;
+@use '../../../assets/variables' as styles;
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: color.$gap;
+    gap: styles.$spacing-md;
 }
 
 // Styles du conteneur pour la version "autonome" (utilisée sur une page)
 .standalone {
-    background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid color.$color-border;
-    width: max(12vw, 400px);
-    margin: 2rem auto;
+    background: linear-gradient(180deg, white 0%, rgba(styles.$color-primary, 0.1) 100%);
+    padding: styles.$spacing-xl;
+    border-radius: styles.$border-radius-lg;
+    box-shadow: styles.$shadow-md;
+    border: styles.$border-width-sm solid styles.$color-border;
+    width: max(12vw, 400px); // Garder cette valeur spécifique
+    margin: styles.$spacing-xl auto;
   }
 
 .title {
-    font-size: color.$font-size-title;
-    font-weight: 600;
+    font-size: styles.$font-size-h2;
+    font-weight: styles.$font-weight-semibold;
     text-align: center;
-    color: color.$color-secondary; // Utilisation de la couleur secondaire pour le titre
-    margin-bottom: color.$margin-bottom-title;
-    padding-bottom: color.$padding-bottom-title;
-    border-bottom: 1px solid color.$color-border;
+    color: styles.$color-secondary;
+    margin-bottom: styles.$spacing-lg;
+    padding-bottom: styles.$spacing-md;
+    border-bottom: styles.$border-width-sm solid styles.$color-border;
 }
 
 .previewContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: styles.$spacing-md;
 }
 
 .previewImage {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 250px; // Garder cette valeur spécifique
+    max-height: 250px; // Garder cette valeur spécifique
     object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid color.$color-border; // Utilisation de la couleur de bordure
+    border-radius: styles.$border-radius-md;
+    border: styles.$border-width-sm solid styles.$color-border;
 }
 
 .message {
     text-align: center;
-    font-weight: 500;
-    color: color.$color-text-secondary;
+    font-weight: styles.$font-weight-medium;
+    color: styles.$color-text-secondary;
 }
 
 .houseInfoTitle {
     margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: color.$color-text-primary;
-    border-bottom: 1px solid color.$color-border;
-    padding-bottom: color.$padding-bottom-title;
+    margin-bottom: styles.$spacing-md;
+    font-size: styles.$font-size-lg;
+    color: styles.$color-text-primary;
+    border-bottom: styles.$border-width-sm solid styles.$color-border;
+    padding-bottom: styles.$spacing-md;
 }
 
 .houseImage {
-    // L'image prendra 100% de la largeur de son conteneur parent.
     width: 100%;
-    // La hauteur s'ajustera automatiquement pour conserver les proportions.
     height: auto;
-    // Bonne pratique pour que l'image se comporte comme un bloc et éviter les espaces indésirables.
     display: block;
-    // Vos styles existants fonctionnent parfaitement avec cette configuration.
     object-fit: cover;
-    border-radius: 5px;
-    border: 1px solid color.$color-border;
+    border-radius: styles.$border-radius-sm;
+    border: styles.$border-width-sm solid styles.$color-border;
 }
-
-

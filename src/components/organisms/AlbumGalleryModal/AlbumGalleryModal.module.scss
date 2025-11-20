@@ -1,161 +1,177 @@
-@use '../../../assets/color' as variable;
+// src/components/organisms/AlbumGalleryModal/AlbumGalleryModal.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
-    padding: 1rem; // Ajoute un espace sur les petits écrans pour que la modale ne touche pas les bords
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: v.$z-index-modal-backdrop;
+  padding: v.$spacing-md;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .modal {
-    background: #fff;
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    width: 100%; // La modale prend toute la largeur disponible...
-    max-width: 1100px; // ...jusqu'à une largeur maximale
-    max-height: 90vh; // Hauteur maximale pour laisser de l'espace vertical
-    outline: none;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: v.$color-background-light;
+  border-radius: v.$border-radius-lg;
+  padding: v.$spacing-lg v.$spacing-xl;
+  width: 100%;
+  max-width: 1100px;
+  max-height: 70vh;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: v.$shadow-xl;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid variable.$color-border;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    flex-shrink: 0; // Empêche l'en-tête de se réduire
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: v.$border-width-sm solid v.$color-border;
+  padding-bottom: v.$spacing-md;
+  margin-bottom: v.$spacing-md;
+  flex-shrink: 0;
 
-    h2 {
-        margin: 0;
-        color: variable.$color-secondary;
-        // Gère les titres d'album trop longs
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 1rem;
-    }
+  h2 {
+    margin: 0;
+    color: v.$color-secondary;
+    font-size: v.$font-size-h2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: v.$spacing-md;
+  }
 }
 
 .closeButton {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: variable.$color-text-secondary;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  font-size: v.$font-size-h3;
+  cursor: pointer;
+  color: v.$color-text-secondary;
+  transition: color v.$transition-speed-fast v.$transition-easing;
+  padding: v.$spacing-xxs;
+  border-radius: v.$border-radius-full;
 
-    &:hover {
-        color: variable.$color-error;
-    }
+  &:hover {
+    color: v.$color-error;
+    background-color: rgba(v.$color-error, 0.1);
+  }
 }
 
 .gallery {
-    overflow-y: auto; // Active le défilement vertical si nécessaire
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 0.5rem;
-    padding: 1rem 0.5rem 1rem 0; // Espace intérieur, avec un peu moins à droite pour la barre de défilement
-    flex-grow: 1; // Fait en sorte que la galerie prenne tout l'espace vertical restant
-    min-height: 0px; // Correction nécessaire pour le défilement dans un conteneur flex
-    cursor: grab;
-
-    @media screen and (max-width: 900px) {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: v.$spacing-md;
+  padding: v.$spacing-md v.$spacing-xs v.$spacing-md 0;
+  flex-grow: 1;
+  min-height: 0;
+  cursor: grab;
 }
 
 .photoCard {
-    position: relative;
-    border: 1px solid variable.$color-border;
-    border-radius: 6px;
-    //overflow: hidden;
-    background-color: variable.$color-background-light;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  border: v.$border-width-sm solid v.$color-border;
+  border-radius: v.$border-radius-md;
+  background-color: v.$color-background-light;
+  transition: transform v.$transition-speed-normal v.$transition-easing, box-shadow v.$transition-speed-normal v.$transition-easing, opacity v.$transition-speed-slow v.$transition-easing;
+  transform-origin: center;
 
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  &:hover {
+    transform: translateY(-#{v.$spacing-xxs});
+    box-shadow: v.$shadow-md;
+  }
+
+  img {
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    height: 100%;
+    border-radius: v.$border-radius-md;
+  }
+
+  .actionButtons {
+    display: flex;
+    gap: v.$spacing-xs;
+    position: absolute;
+    bottom: v.$spacing-sm;
+    right: v.$spacing-sm;
+
+    .deleteButton:hover {
+      color: v.$color-error;
     }
 
-    img {
-        width: 100%;
-        min-height: 160px;
-        object-fit: cover;
-        height: 100%;
+    .editButton, .deleteButton {
+      background-color: rgba(v.$color-background-light, 0.8);
+      backdrop-filter: blur(2px);
     }
+  }
 
-    p {
-        margin: 0;
-        padding: 0.75rem;
-        font-size: 0.85rem;
-        color: variable.$color-text-secondary;
-        text-align: center;
-        flex-grow: 1;
-    }
-
-    .actionButtons {
-        display: flex;
-        gap: variable.$gap;
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-
-        .deleteButton {
-            &:hover {
-                color: red;
-            }
-        }
-
-        .editButton, .deleteButton {
-            background-color: white;
-        }
-    }
+  &.deleting {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
 
 .headerLeft {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    // gap: 0.5rem;
-    // Pour s'assurer que ce conteneur ne devient pas trop large et pousse le bouton de fermeture
-    min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-md;
+  min-width: 0;
 }
 
-.Button {
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease-in-out; // Transition sur le fond
-    background-color: variable.$color-primary;
-    padding: 0.5rem;
-    border-radius: 10px;
+.Button { // Style pour le bouton "Ajouter"
+  cursor: pointer;
+  font-weight: v.$font-weight-semibold;
+  transition: background-color v.$transition-speed-normal v.$transition-easing;
+  background-color: v.$color-primary;
+  padding: v.$spacing-xs v.$spacing-sm;
+  border-radius: v.$border-radius-md;
 
-    &:hover {
-        // La couleur du texte est blanche (via les props), on change donc le fond au survol
-        background-color: color.adjust(variable.$color-primary, $lightness: -10%);
-    }
-}
-
-.photoCard {
-    /* Ajoutez ces transitions pour une animation fluide */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transform-origin: center;
-  
-    /* Classe qui sera ajoutée pour déclencher l'animation de suppression */
-    &.deleting {
-      transform: scale(0);
-      opacity: 0;
-    }
+  &:hover {
+    background-color: color.adjust(v.$color-primary, $lightness: -10%);
   }
-  
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-lg) { // Pour tablettes (<= 992px)
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: v.$breakpoint-md) { // Pour mobiles (<= 768px)
+  .modal {
+    padding: v.$spacing-md v.$spacing-lg;
+  }
+  .header h2 {
+    font-size: v.$font-size-h3;
+  }
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: v.$spacing-sm;
+  }
+}
+
+@media (max-width: v.$breakpoint-sm) { // Pour petits mobiles (<= 576px)
+  .overlay {
+    padding: v.$spacing-xs;
+  }
+  .modal {
+    padding: v.$spacing-sm;
+  }
+  .gallery {
+    grid-template-columns: 1fr; // Une seule colonne
+  }
+}

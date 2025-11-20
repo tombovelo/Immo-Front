@@ -1,54 +1,62 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .card {
-  background-color: #fff;
-  border-radius: 12px; // Bords plus arrondis
+  // --- Structure et Apparence ---
+  background-color: v.$color-background-light;
+  border-radius: v.$border-radius-lg;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  border: 1px solid variable.$color-border;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: v.$shadow-md;
+  border: v.$border-width-sm solid v.$color-border;
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: transform v.$transition-speed-normal v.$transition-easing,
+    box-shadow v.$transition-speed-normal v.$transition-easing;
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-#{v.$spacing-xs});
+    box-shadow: v.$shadow-lg;
   }
 }
 
 .cardHeader {
+  // --- Header Structure ---
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: variable.$color-background-light;
-  border-bottom: 1px solid variable.$color-border;
+  padding: v.$spacing-sm v.$spacing-md;
+  background-color: v.$color-background-light;
+  border-bottom: v.$border-width-sm solid v.$color-border;
 
   .ville {
-    font-weight: 600;
-    color: variable.$color-text-primary;
+    // --- City Text ---
+    font-weight: v.$font-weight-semibold;
+    font-size: v.$font-size-base;
+    color: v.$color-text-primary;
   }
 }
 
 .transactionBadge {
-  background-color: variable.$color-primary; // Utilisation de la couleur primaire pour attirer l'œil
-  color: variable.$color-text-light;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  // --- Badge Style ---
+  background-color: v.$color-primary;
+  color: v.$color-text-light;
+  padding: v.$spacing-xxs v.$spacing-sm;
+  border-radius: v.$border-radius-full;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .imageContainer {
+  // --- Image Container ---
   position: relative;
   width: 100%;
-  height: 220px; // Hauteur légèrement augmentée
+  height: 220px;
 
   img {
+    // --- Image Style ---
     display: block;
     width: 100%;
     height: 100%;
@@ -57,82 +65,135 @@
 }
 
 .imageOverlay {
+  // --- Overlay Style ---
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem 1rem 1rem; // Plus d'espace pour le dégradé
+  padding: v.$spacing-lg v.$spacing-md v.$spacing-md;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   cursor: pointer;
-  
-  // Cible le composant IconText et ses enfants
-  // pour leur donner la bonne couleur.
-  color: variable.$color-text-light;
-  > div { // Cible le conteneur interne de IconText
+  color: v.$color-text-light;
+
+  // --- Targeting IconText Component ---
+  > div {
     > svg {
-      color: variable.$color-text-light;
+      color: v.$color-text-light;
     }
   }
 }
 
 .cardBody {
-  padding: 1rem;
+  // --- Body Structure ---
+  padding: v.$spacing-md;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  flex-grow: 1; // Permet au corps de la carte de grandir
+  gap: v.$spacing-md;
+  flex-grow: 1;
 }
 
 .cardStats {
+  // --- Stats Structure ---
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; // Aligne en haut pour gérer des tailles de texte différentes
   align-items: center;
-  
-  // Style pour l'icône et le texte du nombre de pièces
+
+  // --- IconText Styling ---
   > div {
-    color: variable.$color-text-secondary;
-    svg { color: variable.$color-primary; }
+    color: v.$color-text-secondary;
+
+    svg {
+      color: v.$color-primary;
+    }
   }
 }
 
 .price {
-  font-size: 1rem;
-  font-weight: 700;
-  color: variable.$color-text-primary;
+  // --- Price Text ---
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-bold;
+  color: v.$color-text-primary;
   margin: 0;
   text-align: right;
 }
 
 .cardOwner {
+  // --- Owner Structure ---
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid variable.$color-border;
-  font-size: 0.9rem;
-  
-  // Style pour les icônes et textes du propriétaire
+  gap: v.$spacing-md;
+  padding-top: v.$spacing-sm;
+  border-top: v.$border-width-sm solid v.$color-border;
+  font-size: v.$font-size-sm;
+
+  // --- IconText Styling ---
   > div {
-    color: variable.$color-text-secondary;
-    svg { color: variable.$color-text-secondary; }
+    color: v.$color-text-secondary;
+
+    svg {
+      color: v.$color-text-secondary;
+    }
   }
 }
 
 .cardFooter {
-  padding: 0 1rem 1rem; // Padding uniquement en bas
-  margin-top: auto; // Pousse le footer en bas de la carte
-  
-  // Style pour le bouton
+  // --- Footer Structure ---
+  padding: 0 v.$spacing-md v.$spacing-md;
+  margin-top: auto;
+
+  // --- Button Styling ---
   button {
-    background-color: variable.$color-primary;
-    color: white;
+    background-color: v.$color-primary;
+    color: v.$color-text-light;
     width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color v.$transition-speed-normal v.$transition-easing;
 
     &:hover {
-      background-color: color.adjust(variable.$color-primary, $lightness: -5%);
+      background-color: color.adjust(v.$color-primary, $lightness: -5%);
     }
+  }
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: v.$breakpoint-md) {
+  .cardHeader {
+    padding: v.$spacing-xs v.$spacing-sm;
+
+    .ville {
+      font-size: v.$font-size-sm;
+    }
+  }
+
+  .transactionBadge {
+    font-size: v.$font-size-xs;
+    padding: v.$spacing-xxs v.$spacing-xs;
+  }
+
+  .imageContainer {
+    height: 180px; /* Adjust image height for smaller screens */
+  }
+
+  .imageOverlay {
+    padding: v.$spacing-lg v.$spacing-sm v.$spacing-sm;
+  }
+
+  .cardBody {
+    padding: v.$spacing-sm;
+    gap: v.$spacing-sm;
+  }
+
+  .price {
+    font-size: v.$font-size-sm;
+  }
+
+  .cardOwner {
+    font-size: v.$font-size-xs;
+    padding-top: v.$spacing-xs;
+    gap: v.$spacing-xs;
+  }
+
+  .cardFooter {
+    padding: 0 v.$spacing-sm v.$spacing-sm;
   }
 }

@@ -1,21 +1,52 @@
-@use '../../../assets/color' as variable;
+// src/components/atoms/IconButton/IconButton.module.scss
+
+// 1. Importation des variables globales et d'un module Sass
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .iconButton {
+  // --- Structure et apparence ---
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 0.4rem;
-  border-radius: 4px;
+  // On utilise un rayon complet pour un look circulaire, très courant pour les boutons d'icône
+  border-radius: v.$border-radius-full; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: variable.$font-size; // Taille de l'icône
-  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: v.$spacing-xs; // Padding de base pour desktop (ex: 8px)
 
-  &:hover {
-    color: variable.$color-primary; // Couleur au survol
-    background-color: color.adjust(variable.$color-background-light, $lightness: -2%);
+  // --- Typographie (pour la taille de l'icône) et couleur ---
+  // On utilise une taille de police plus grande pour que l'icône soit bien visible
+  font-size: v.$font-size-xl; 
+  color: v.$color-text-secondary; // Couleur par défaut discrète
+
+  // --- Comportement et animations ---
+  cursor: pointer;
+  transition: 
+    background-color v.$transition-speed-fast v.$transition-easing,
+    color v.$transition-speed-fast v.$transition-easing,
+    transform v.$transition-speed-fast v.$transition-easing;
+
+  // --- États ---
+  &:hover,
+  &:focus-visible { // Améliore l'accessibilité pour la navigation au clavier
+    color: v.$color-primary;
+    // Fond subtil basé sur la couleur primaire pour le survol
+    background-color: rgba(v.$color-primary, 0.1); 
+  }
+
+  &:active {
+    // Léger effet de pression au clic
+    transform: scale(0.95); 
+  }
+
+  // --- Styles Responsives ---
+  // Pour les écrans plus petits que le breakpoint 'md' (768px)
+  @media (max-width: v.$breakpoint-md) {
+    // On augmente le padding pour agrandir la zone tactile sur mobile
+    padding: v.$spacing-sm; // ex: 12px
+    
+    // On peut aussi légèrement augmenter la taille de l'icône elle-même
+    font-size: v.$font-size-h3;
   }
 }
-

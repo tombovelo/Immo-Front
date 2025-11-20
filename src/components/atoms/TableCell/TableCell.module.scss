@@ -1,19 +1,45 @@
-@use '../../../assets/color' as variable;
-@use 'sass:color';
+// src/components/atoms/TableCell/TableCell.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color'; // Nécessaire pour color.adjust
 
 .cell {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid variable.$color-border;
-  vertical-align: middle;
-  text-align: center;
+  // --- Structure et espacement ---
+  padding: v.$spacing-sm v.$spacing-md; // Padding interne (ex: 12px 16px)
+  text-align: center; // Alignement du texte au centre
+  vertical-align: middle; // Alignement vertical au milieu
+  border-bottom: v.$border-width-sm solid v.$color-border; // Bordure inférieure
 
-  // Style for header cells
+  // --- Typographie ---
+  font-family: v.$font-family-primary;
+  font-size: v.$font-size-base; // Taille de police de base
+  color: v.$color-text-primary; // Couleur du texte principal
+
+  // --- Transitions (si des changements d'état sont prévus) ---
+  transition: 
+    background-color v.$transition-speed-fast v.$transition-easing,
+    color v.$transition-speed-fast v.$transition-easing;
+
+  // --- Style pour les cellules d'en-tête (th) ---
+  // Utilise :global pour cibler l'élément th qui a la classe .cell
   :global(th).cell {
-    font-weight: 600;
-    color: variable.$color-text-secondary;
-    background-color: color.adjust(variable.$color-background-light, $lightness: -2%);
+    font-weight: v.$font-weight-semibold; // Police semi-épaisse
+    color: v.$color-text-secondary; // Couleur de texte secondaire
+    background-color: color.adjust(v.$color-background-light, $lightness: -2%); // Fond légèrement plus foncé
   }
 
-}
+  // --- Styles Responsives ---
+  // Pour les écrans plus petits que le breakpoint 'md' (768px)
+  @media (max-width: v.$breakpoint-md) {
+    padding: v.$spacing-xs v.$spacing-sm; // Réduit le padding sur mobile (ex: 8px 12px)
+    font-size: v.$font-size-sm; // Réduit la taille de la police sur mobile (ex: 14px)
+  }
 
+  // Pour les écrans très petits (téléphones en mode portrait)
+  @media (max-width: v.$breakpoint-sm) {
+    // On peut réduire encore plus le padding ou la taille de police si nécessaire
+    padding: v.$spacing-xxs v.$spacing-xs; // ex: 4px 8px
+    font-size: v.$font-size-xs; // ex: 12px
+  }
+}

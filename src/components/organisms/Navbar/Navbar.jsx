@@ -50,6 +50,7 @@ const Navbar = () => {
                   icon={FaHome}
                   variant="link"
                   onClick={closeMobileMenu}
+                  className={styles.color}
                 >
                   Maisons
                 </MyNavLink>

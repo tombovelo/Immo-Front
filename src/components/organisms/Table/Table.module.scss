@@ -1,39 +1,35 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as styles;
 
 .tableContainer {
   overflow-x: auto; // Pour la responsivité sur petits écrans
-  background: linear-gradient(-90deg, white 0%, rgba(variable.$color-primary, 0.1) 100%);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(-90deg, white 0%, rgba(styles.$color-primary, 0.1) 100%);
+  border-radius: styles.$border-radius-md;
+  box-shadow: styles.$shadow-sm; // Ombre légère pour le conteneur
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: variable.$font-size;
-  color: variable.$color-text-primary;
+  font-size: styles.$font-size-base;
+  color: styles.$color-text-primary;
   // Assure une largeur minimale pour le tableau afin d'activer le défilement horizontal sur les petits écrans
   min-width: 600px; // Ajustez cette valeur selon le nombre de colonnes et leur contenu
 }
 
 .noData {
   text-align: center;
-  padding: 2rem;
-  color: variable.$color-text-secondary;
+  padding: styles.$spacing-xl;
+  color: styles.$color-text-secondary;
   font-style: italic;
 }
 
 .groupRow {
   td {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    padding: 0.8rem 1rem;
-    border-bottom: 2px solid variable.$color-primary;
-    color: variable.$color-text-primary;
-    font-size: 1.1em;
+    background-color: styles.$color-background-light; // Fond clair standardisé
+    font-weight: styles.$font-weight-bold;
+    padding: styles.$spacing-sm styles.$spacing-md;
+    border-bottom: styles.$border-width-md solid styles.$color-primary;
+    color: styles.$color-text-primary;
+    font-size: styles.$font-size-lg; // Taille de police légèrement plus grande
   }
-  
 }
-
-
-

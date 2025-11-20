@@ -1,18 +1,10 @@
-@use '../../assets/color' as variable;
+@use '../../assets/variables' as styles;
 
 .container {
-    padding: 1rem;
-    background-color: variable.$color-background-light;
+    padding: styles.$spacing-md;
+    background-color: styles.$color-background-light;
     min-height: 100vh;
     width: 100%;
 }
 
-// .loading {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100vh;
-//     font-size: 1.2rem;
-//     color: variable.$color-text-secondary;
-// }
 

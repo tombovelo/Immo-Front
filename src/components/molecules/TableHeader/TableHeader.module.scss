@@ -1,4 +1,6 @@
-@use '../../../assets/color' as variable;
+// src/components/organisms/TableHeader/TableHeader.module.scss
+
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .headerRow {
@@ -6,19 +8,17 @@
 }
 
 .headerCell {
-    font-weight: 600;
-    color: variable.$color-text-secondary;
-    background-color: color.adjust(variable.$color-background-light, $lightness: -2%);
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-secondary;
+    background-color: color.adjust(v.$color-background-light, $lightness: -2%);
     position: sticky; // Makes the header sticky when scrolling
     top: 0;
     // Styles de base hérités/copiés de TableCell pour la cohérence
-    padding: 0.75rem 1rem;
+    padding: v.$spacing-sm v.$spacing-md;
     // text-align: center;
     vertical-align: middle;
     display: flex;
     // align-items: center;
     // justify-content: center;
-    border-bottom: 2px solid variable.$color-primary; // Stronger border for header
-
+    border-bottom: v.$border-width-md solid v.$color-primary; // Stronger border for header
 }
-

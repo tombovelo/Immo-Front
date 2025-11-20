@@ -1,45 +1,64 @@
-@use '../../../assets/color' as color;
+// src/components/atoms/PhotoPlaceholder/PhotoPlaceholder.module.scss
+
+@use '../../../assets/variables' as v;
 
 .placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f2f5;
-    border: 1px dashed #d9d9d9;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    color: #8c8c8c;
+  // --- Structure et Apparence ---
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: v.$color-background-light;
+  border: v.$border-width-sm dashed v.$color-border;
+  border-radius: v.$border-radius-md;
+  position: relative;
+  overflow: hidden;
+  color: v.$color-text-secondary;
 }
 
 .icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.5;
+  // --- Icon Style ---
+  font-size: 2.5rem;
+  margin-bottom: v.$spacing-xs;
+  opacity: 0.5;
 }
 
 .text {
-    font-size: 0.8rem;
-    font-weight: 500;
+  // --- Text Style ---
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-medium;
 }
 
 .spinner {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, color.$color-primary, transparent);
-    animation: move 1.5s infinite;
+  // --- Spinner Style ---
+  position: absolute;
+  width: 100%;
+  height: v.$border-width-sm;
+  background: linear-gradient(90deg, transparent, v.$color-primary, transparent);
+  animation: move 1.5s infinite;
 }
 
+/* --- Keyframes Animation --- */
 @keyframes move {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
 
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: v.$breakpoint-md) {
+  .icon {
+    font-size: 2rem; /* Smaller icon on smaller screens */
+    margin-bottom: v.$spacing-xxs;
+  }
+
+  .text {
+    font-size: v.$font-size-xs; /* Smaller text on smaller screens */
+  }
+}

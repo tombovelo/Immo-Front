@@ -1,15 +1,16 @@
-@use '../../../assets/color' as color;
+// src/components/organisms/MaisonListMap/MaisonListMap.module.scss
+@use '../../../assets/variables' as styles;
 
 .container {
     height: 600px;
     width: 100%;
-    margin-bottom: 2rem;
-    border-radius: 8px;
+    margin-bottom: styles.$spacing-xl;
+    border-radius: styles.$border-radius-md;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: styles.$shadow-md;
     text-align: center;
-    color: color.$color-text-secondary;
-    padding: 2rem;
+    color: styles.$color-text-secondary;
+    padding: styles.$spacing-xl;
 }
 
 .mapContainer {

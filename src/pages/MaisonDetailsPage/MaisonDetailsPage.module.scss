@@ -1,8 +1,6 @@
-@use '../../assets/color' as variable;
+@use '../../assets/variables' as variable;
 
 .container {
-    // background-color: variable.$color-background-light;
-    // min-height: 100vh;
     width: 100%;
 }
 

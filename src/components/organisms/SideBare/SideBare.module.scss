@@ -1,10 +1,10 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as styles;
 @use 'sass:color';
 
 .sidebar {
-  background-color: variable.$color-secondary;
-  color: variable.$color-text-light;
-  width: 260px;
+  background-color: styles.$color-secondary;
+  color: styles.$color-text-light;
+  width: 260px; // Largeur spécifique conservée
   height: 100vh;
   position: fixed;
   top: 0;
@@ -12,9 +12,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.5rem;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
-  z-index: 1100;
+  padding: styles.$spacing-lg;
+  box-shadow: styles.$shadow-md; // Utilisation de l'ombre standardisée
+  z-index: styles.$z-index-sticky; // Utilisation de la variable z-index
 }
 
 .sidebarTop {
@@ -24,20 +24,20 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: variable.$gap;
+  gap: styles.$gap-default;
 
-.brandImage {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+  .brandImage {
+    width: 40px; // Largeur spécifique conservée
+    height: 40px; // Hauteur spécifique conservée
+    border-radius: styles.$border-radius-full;
+    object-fit: cover;
+  }
 
   h2 {
     margin: 0;
-    font-size: variable.$font-size-title;
-    font-weight: 700;
-    color: variable.$color-primary;
+    font-size: styles.$font-size-h2; // Utilisation de la taille de titre standard
+    font-weight: styles.$font-weight-bold;
+    color: styles.$color-primary;
   }
 }
 
@@ -58,25 +58,24 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.9rem 1.5rem;
+  padding: styles.$spacing-md styles.$spacing-lg;
   background: transparent;
-  border: 2px solid color.adjust(variable.$color-error, $lightness: -10%);
-  color: color.adjust(variable.$color-error, $lightness: -10%);
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border: styles.$border-width-md solid color.adjust(styles.$color-error, $lightness: -10%);
+  color: color.adjust(styles.$color-error, $lightness: -10%);
+  border-radius: styles.$border-radius-md;
+  font-size: styles.$font-size-base;
+  font-weight: styles.$font-weight-semibold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all styles.$transition-speed-normal styles.$transition-easing;
 
   &:hover {
-    background-color: variable.$color-error;
-    border-color: variable.$color-error;
-    color: variable.$color-text-light;
+    background-color: styles.$color-error;
+    border-color: styles.$color-error;
+    color: styles.$color-text-light;
   }
 }
 
 .logoutIcon {
-  margin-right: 1rem;
-  font-size: 1.3rem;
+  margin-right: styles.$spacing-md;
+  font-size: styles.$font-size-xl; // Taille d'icône standardisée
 }
-

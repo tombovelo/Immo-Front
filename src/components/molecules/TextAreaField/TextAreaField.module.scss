@@ -1,12 +1,20 @@
+// src/components/molecules/TextAreaField/TextAreaField.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+
 .field {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .textareaWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
+  // --- Structure de base ---
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: v.$spacing-sm; // Ajoute un espacement sous chaque champ
+}
+
+.textareaWrapper {
+  // --- Structure interne ---
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

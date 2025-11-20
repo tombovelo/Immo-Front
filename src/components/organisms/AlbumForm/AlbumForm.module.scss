@@ -1,36 +1,41 @@
-@use '../../../assets/color' as color;
+// src/components/organisms/AlbumForm/AlbumForm.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color';
 
 // Styles de base pour la disposition interne du formulaire
 .form {
   display: flex;
   flex-direction: column;
-  gap: color.$gap;
+  gap: v.$spacing-md; // Espacement entre les champs
   width: 100%;
 }
 
 // Styles du conteneur pour la version "autonome" (utilisée sur une page)
 .standalone {
-  background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid color.$color-border;
+  background: linear-gradient(180deg, v.$color-background-light 0%, rgba(v.$color-primary, 0.1) 100%);
+  padding: v.$spacing-xl;
+  border-radius: v.$border-radius-lg; // Coins plus arrondis
+  box-shadow: v.$shadow-md;
+  border: v.$border-width-sm solid v.$color-border;
   max-width: 450px;
 }
 
 .title {
-  color: color.$color-secondary;
-  font-size: color.$font-size-title;
+  color: v.$color-secondary;
+  font-size: v.$font-size-h2; // Utilise une taille de titre standard
   text-align: center;
-  margin-bottom: color.$margin-bottom-title;
-  padding-bottom: color.$padding-bottom-title;
-  border-bottom: 1px solid color.$color-border;
+  margin-bottom: v.$spacing-lg;
+  padding-bottom: v.$spacing-md;
+  border-bottom: v.$border-width-sm solid v.$color-border;
 }
 
-@media screen and (max-width: 750px) {
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
   // La responsivité du padding s'applique uniquement à la version autonome
   .standalone {
-    padding: 1.5rem 1rem;
-    gap: 0.75rem;
+    padding: v.$spacing-lg v.$spacing-md;
+    gap: v.$spacing-sm;
   }
 }

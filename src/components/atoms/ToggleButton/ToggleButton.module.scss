@@ -1,23 +1,46 @@
+// src/components/atoms/ToggleButton/ToggleButton.module.scss
 
-@use '../../../assets/color' as color;
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 
 .toggleButton {
+  // --- Positionnement ---
   position: absolute;
-  right: 0.5rem;
+  // Positionné par rapport au bord droit et centré verticalement
+  right: v.$spacing-sm; 
+  top: 50%;
+  transform: translateY(-50%);
+
+  // --- Structure et apparence ---
   background-color: transparent;
   border: none;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem; // Rend l'icône un peu plus grande et facile à cliquer
-  color: color.$color-text-secondary; // Couleur grise discrète par défaut
-  transition: color 0.2s ease;
+  padding: v.$spacing-xxs; // Ajoute un petit padding pour agrandir la zone cliquable
+  border-radius: v.$border-radius-full; // Forme circulaire pour un bel effet au survol
 
-  &:hover {
-    color: color.$color-primary; // Change en couleur primaire au survol
+  // --- Typographie (pour la taille de l'icône) et couleur ---
+  font-size: v.$font-size-lg; // Taille de l'icône (ex: 18px)
+  color: v.$color-text-secondary; // Couleur grise discrète par défaut
+
+  // --- Comportement et animations ---
+  cursor: pointer;
+  transition: 
+    color v.$transition-speed-fast v.$transition-easing,
+    background-color v.$transition-speed-fast v.$transition-easing;
+
+  // --- États ---
+  &:hover,
+  &:focus-visible { // Améliore l'accessibilité pour la navigation au clavier
+    color: v.$color-primary;
+    background-color: rgba(v.$color-primary, 0.1); // Fond subtil au survol
+  }
+
+  // --- Styles Responsives ---
+  @media (max-width: v.$breakpoint-md) {
+    // Sur mobile, on agrandit la zone tactile
+    padding: v.$spacing-xs; // Padding plus grand (ex: 8px)
+    right: v.$spacing-xs; // Un peu plus proche du bord si nécessaire
   }
 }
-
-
-  

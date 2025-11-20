@@ -1,72 +1,90 @@
-@use '../../../assets/color' as variable;
+// src/components/atoms/Button/Button.module.scss
+
+// 1. Importation des variables globales et d'un module Sass
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: variable.$font-size;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none; // Pour les cas où le bouton est un lien
+  // --- Structure et espacement ---
   display: inline-block;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  box-sizing: border-box; // Bonne pratique à conserver
+  padding: v.$spacing-sm v.$spacing-lg; // Padding vertical et horizontal
+  border: v.$border-width-md solid transparent; // Bordure transparente par défaut pour garder la même taille
+  border-radius: v.$border-radius-md; // Coins arrondis
 
-  // Style par défaut (bouton primaire)
-  background-color: variable.$color-primary;
-  color: variable.$color-text-light;
+  // --- Typographie ---
+  font-family: v.$font-family-primary;
+  font-size: v.$font-size-base; // Taille de police de base
+  font-weight: v.$font-weight-semibold; // Police semi-épaisse
+  text-align: center;
+  text-decoration: none;
+
+  // --- Comportement et animations ---
+  cursor: pointer;
+  transition: 
+    background-color v.$transition-speed-normal v.$transition-easing,
+    color v.$transition-speed-normal v.$transition-easing,
+    border-color v.$transition-speed-normal v.$transition-easing,
+    transform v.$transition-speed-fast v.$transition-easing;
+
+  // --- Style par défaut (bouton primaire) ---
+  background-color: v.$color-primary;
+  color: v.$color-text-light;
+  box-shadow: v.$shadow-sm;
 
   &:hover {
-    background-color: color.adjust(variable.$color-primary, $lightness: 10%);
+    background-color: color.adjust(v.$color-primary, $lightness: -5%); // Assombrit légèrement au survol
+    box-shadow: v.$shadow-md;
+    transform: translateY(-2px); // Léger effet de soulèvement
   }
 
-  // Style pour un bouton secondaire
+  // --- Variante Secondaire ---
   &.secondary {
-    background-color: variable.$color-text-secondary;
-    color: variable.$color-text-light;
+    background-color: v.$color-secondary;
+    color: v.$color-text-light;
 
     &:hover {
-      background-color: color.adjust(variable.$color-text-secondary, $lightness: 10%);
+      background-color: color.adjust(v.$color-secondary, $lightness: 5%);
     }
   }
 
-  // Style pour un bouton d'accentuation
+  // --- Variante d'Accentuation (Call to Action) ---
   &.accent {
-    background-color: variable.$color-accent;
-    color: variable.$color-text-light;
+    background-color: v.$color-accent;
+    color: v.$color-text-light;
 
     &:hover {
-      background-color: color.adjust(variable.$color-accent, $lightness: 10%);
+      background-color: color.adjust(v.$color-accent, $lightness: -5%);
     }
   }
 
-  // Style pour un bouton avec une bordure
+  // --- Variante "Contour" (Outline) ---
   &.outline {
     background-color: transparent;
-    color: variable.$color-primary;
-    border: 2px solid variable.$color-primary;
+    color: v.$color-primary;
+    border-color: v.$color-primary;
+    box-shadow: none;
 
     &:hover {
-      background-color: variable.$color-primary;
-      color: variable.$color-text-light;
+      background-color: v.$color-primary;
+      color: v.$color-text-light;
     }
   }
 
-  // Style pour un bouton désactivé
+  // --- État Désactivé ---
   &:disabled,
   &.disabled {
-    background-color: variable.$color-disabled;
-    color: variable.$color-text-disabled;
+    background-color: v.$color-disabled;
+    color: v.$color-text-disabled;
     cursor: not-allowed;
-    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
   }
 
-  // Version mobile pour les écrans jusqu'à 768px de large
-  @media (max-width: 900px) {
-    // On réduit la taille du bouton au lieu de le mettre en pleine largeur
-    padding: 0.6rem 1.2rem; // Padding réduit pour un bouton plus compact
-    font-size: 0.9rem; // Police légèrement plus petite
+  // --- Styles Responsives ---
+  // Pour les écrans plus petits que le breakpoint 'md' (768px)
+  @media (max-width: v.$breakpoint-md) {
+    // On rend le bouton plus compact pour les mobiles
+    padding: v.$spacing-xs v.$spacing-md;
+    font-size: v.$font-size-sm;
   }
 }

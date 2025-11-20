@@ -1,63 +1,100 @@
-@use '../../../assets/color' as variable;
+// src/components/organisms/AddPhotoModal/AddPhotoModal.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color'; // Nécessaire pour color.adjust si utilisé
 
 .overlay {
+  // --- Positionnement et apparence ---
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 4000; // Doit être supérieur à la modale de la galerie
+  z-index: 4000; // Gère la profondeur de l'overlay
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 1rem; // Ajoute un peu de padding pour éviter que la modale ne touche les bords sur mobile
+  align-items: center;
+  padding: v.$spacing-md; // Espacement pour éviter que la modale ne touche les bords
+
+  // --- Effet de flou (optionnel mais moderne) ---
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .modal {
-  background: white;
-  border-radius: 8px;
-  padding: 2rem; // Padding interne de la modale
+  // --- Structure et apparence ---
+  background: v.$color-background-light;
+  border-radius: v.$border-radius-lg; // Coins plus arrondis
+  padding: v.$spacing-xl; // Padding interne généreux
   outline: none;
   max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%; // Prend toute la largeur disponible jusqu'au max-width
+  box-shadow: v.$shadow-xl; // Ombre prononcée pour la profondeur
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: 90vh; // Limite la hauteur
+  overflow-y: auto; // Active le défilement si nécessaire
+  z-index: v.$z-index-modal; // Assure que la modale est au-dessus de l'overlay
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid variable.$color-border;
+    margin-bottom: v.$spacing-lg;
+    padding-bottom: v.$spacing-md;
+    border-bottom: v.$border-width-sm solid v.$color-border;
 
     h2 {
       margin: 0;
-      font-size: 1.5rem;
-      color: variable.$color-secondary;
+      font-size: v.$font-size-h2;
+      color: v.$color-secondary; // Utilise la couleur secondaire pour le titre
     }
 
     .closeButton {
+      // On réutilise le style de IconButton pour la cohérence
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: v.$font-size-h3;
       cursor: pointer;
-      color: variable.$color-text-secondary;
-      transition: color 0.2s ease;
+      color: v.$color-text-secondary;
+      transition: color v.$transition-speed-fast v.$transition-easing;
+      padding: v.$spacing-xxs;
+      border-radius: v.$border-radius-full;
 
       &:hover {
-        color: variable.$color-error;
+        color: v.$color-error; // Couleur d'erreur au survol pour le bouton de fermeture
+        background-color: rgba(v.$color-error, 0.1); // Fond subtil au survol
       }
     }
   }
 
-  // Styles responsifs pour la modale elle-même
-  @media screen and (max-width: 750px) {
-    padding: 1.5rem;
-  }
+  // Le contenu (le formulaire) est géré par le composant PhotoForm
+  // avec la variante "embedded", donc pas besoin de styles spécifiques ici.
+}
 
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  .modal {
+    padding: v.$spacing-lg; // Padding réduit pour les tablettes
+
+    .header h2 {
+      font-size: v.$font-size-h3;
+    }
+  }
+}
+
+@media (max-width: v.$breakpoint-sm) {
+  .overlay {
+    padding: v.$spacing-sm; // Moins de padding sur les petits écrans
+  }
+  .modal {
+    padding: v.$spacing-md; // Padding encore plus réduit pour les mobiles
+
+    .header {
+      margin-bottom: v.$spacing-md;
+      padding-bottom: v.$spacing-sm;
+    }
+  }
 }

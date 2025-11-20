@@ -1,5 +1,7 @@
+@use '../../assets/variables' as styles;
+
 .container {
-    padding: 1rem;
-    background-color: #f4f7f6;
+    padding: styles.$spacing-md;
+    background-color: styles.$color-background-light;
     min-height: 100vh;
 }

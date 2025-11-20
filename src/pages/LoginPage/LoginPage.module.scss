@@ -1,10 +1,9 @@
+@use '../../assets/variables' as styles;
+
 .container {
     display: flex;
     justify-content: center; // centre horizontalement
     align-items: center;     // centre verticalement
     height: 100vh;
-    padding: 1rem;
+    padding: styles.$spacing-md;
 }
-  
-  
-  

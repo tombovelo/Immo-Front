@@ -1,15 +1,23 @@
-@use '../../../assets/color' as variable;
-@use 'sass:color';
+// src/components/atoms/TableRow/TableRow.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color'; // Nécessaire pour color.adjust
 
 .row {
-  transition: background-color 0.2s ease;
+  // --- Transitions ---
+  // Utilise les variables de transition pour une animation fluide
+  transition: background-color v.$transition-speed-normal v.$transition-easing;
   
+  // --- Comportement au clic ---
+  // Applique un curseur "pointer" si la ligne est cliquable
   &[onclick] {
     cursor: pointer;
   }
 
+  // --- État de survol ---
+  // Assombrit légèrement la couleur de fond au survol
   &:hover {
-    background-color: color.adjust(variable.$color-background-light, $lightness: -3%);
+    background-color: color.adjust(v.$color-background-light, $lightness: -3%);
   }
 }
-

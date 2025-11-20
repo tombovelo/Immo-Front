@@ -1,33 +1,46 @@
-@use '../../../assets/color' as variable; // Importation de vos variables de couleur
+// src/components/atoms/Input/Input.module.scss
+
+// 1. Importation des variables globales et d'un module Sass
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .input {
-  width: 100%;
-  padding: 0.6rem 1rem;
-  border: 1px solid variable.$color-border;
-  border-radius: 5px;
-  font-size: variable.$font-size;
-  color: variable.$color-text-primary;
-  background-color: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  // --- Structure et espacement ---
+  width: 100%; // Prend toute la largeur disponible
+  padding: v.$spacing-xs v.$spacing-sm; // Espacement interne (8px 12px)
 
-  // Style pour le texte de l'placeholder
+  // --- Bordure et aspect visuel ---
+  border: v.$border-width-sm solid v.$color-border; // Bordure fine et grise
+  border-radius: v.$border-radius-md; // Coins légèrement arrondis
+  background-color: v.$color-background-light; // Fond blanc cassé
+
+  // --- Typographie ---
+  font-family: v.$font-family-primary;
+  font-size: v.$font-size-base; // Taille de police de base (16px)
+  color: v.$color-text-primary; // Couleur du texte principal
+
+  // --- Transitions ---
+  transition: 
+    border-color v.$transition-speed-normal v.$transition-easing,
+    box-shadow v.$transition-speed-normal v.$transition-easing;
+
+  // --- Placeholder ---
   &::placeholder {
-    color: variable.$color-text-disabled;
+    color: v.$color-text-secondary; // Couleur du placeholder (gris moyen)
+    font-style: italic; // Style italique pour le placeholder
   }
 
-  // Style lorsque le champ est en focus (cliqué)
+  // --- États ---
   &:focus {
-    outline: none;
-    border-color: variable.$color-primary;
-    // box-shadow: 0 0 0 3px lighten(variable.$color-primary, 35%); // Ajoute un halo de couleur
-    box-shadow: 0 0 0 3px color.adjust(variable.$color-primary, $lightness: 35%); // Ajoute un halo de couleur
+    outline: none; // Supprime la bordure par défaut au focus
+    border-color: v.$color-primary; // Bordure bleue au focus
+    // Ajoute un halo bleu clair au focus
+    box-shadow: 0 0 0 v.$spacing-xxs color.adjust(v.$color-primary, $lightness: 40%); 
   }
 
-  // Style lorsque le champ est désactivé
   &:disabled {
-    background-color: variable.$color-disabled;
-    color: variable.$color-text-disabled;
-    cursor: not-allowed;
+    background-color: v.$color-disabled; // Fond gris clair pour les champs désactivés
+    color: v.$color-text-disabled; // Texte gris clair pour les champs désactivés
+    cursor: not-allowed; // Curseur "non autorisé"
   }
 }

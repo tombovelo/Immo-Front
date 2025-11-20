@@ -1,4 +1,4 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 /*
@@ -12,36 +12,47 @@
   width: 100%;
   height: 100%;
   // Utilisation de la variable de couleur de fond avec une transparence
-  background-color: rgba(variable.$color-background-light, 0.7);
+  background-color: rgba(v.$color-background-light, 0.7);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 3000;
+  z-index: v.$z-index-modal; /* Use a higher z-index value */
   /* Effet de flou sur le contenu en arrière-plan pour un look moderne */
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px); /* Pour la compatibilité avec Safari */
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity v.$transition-speed-normal v.$transition-easing;
+
+  /* Styles Responsives */
+  @media (max-width: v.$breakpoint-md) {
+    backdrop-filter: blur(1px); /* Less blur on smaller screens */
+    -webkit-backdrop-filter: blur(1px);
+  }
 }
 
 /* L'animation du spinner (la roue qui tourne) */
 .loadingSpinner {
   width: 50px;
   height: 50px;
-  border: 6px solid variable.$color-disabled; /* Gris clair pour la "piste" */
-  border-top-color: variable.$color-primary;  /* Bleu pour la partie active */
+  border: 6px solid v.$color-disabled; /* Gris clair pour la "piste" */
+  border-top-color: v.$color-primary; /* Bleu pour la partie active */
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
 
-
 /* Le message affiché sous le spinner */
 .loadingMessage {
-  margin-top: variable.$gap * 2.5; // 0.5rem * 2.5 = 1.25rem (soit 20px)
-  font-size: 1.1rem; // Un peu plus grand que le texte de base
-  font-weight: 500;
-  color: variable.$color-text-primary;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin-top: v.$spacing-lg;
+  font-size: v.$font-size-lg;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-primary;
+  font-family: v.$font-family-primary;
+
+  /* Styles Responsives */
+  @media (max-width: v.$breakpoint-md) {
+    font-size: v.$font-size-base; /* Smaller font size on smaller screens */
+    margin-top: v.$spacing-md;
+  }
 }
 
 /* L'animation de rotation pour le spinner */
@@ -49,8 +60,8 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
-

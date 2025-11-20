@@ -1,53 +1,67 @@
-@use '../../../assets/color' as variable;
+// src/components/organisms/Map/baseLayerToggle.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 
 .baseLayerToggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 2000; // Au-dessus des tuiles de la carte, mais en dessous des popups
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-    display: flex;
+  // --- Positionnement et structure ---
+  position: absolute;
+  top: v.$spacing-sm; // Positionnement par rapport au coin supérieur droit
+  right: v.$spacing-sm;
+  z-index: v.$z-index-sticky; // Assure qu'il est au-dessus de la carte
+  display: flex;
 
-    button {
-        padding: 8px 12px;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        color: variable.$color-text-primary;
-        transition: background-color 0.2s ease;
+  // --- Apparence ---
+  background: v.$color-background-light;
+  border-radius: v.$border-radius-md;
+  box-shadow: v.$shadow-md; // Ombre pour donner de la profondeur
 
-        &:first-of-type {
-            border-right: 1px solid #ddd;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
+  button {
+    // --- Structure et espacement ---
+    padding: v.$spacing-xs v.$spacing-sm;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 
-        &:last-of-type {
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
+    // --- Typographie ---
+    font-family: v.$font-family-primary;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-text-primary;
 
-        &.active {
-            background-color: #f0f0f0;
-            font-weight: 700;
-        }
+    // --- Transitions ---
+    transition: background-color v.$transition-speed-fast v.$transition-easing;
 
-        &:hover:not(.active) {
-            background-color: #f9f9f9;
-        }
+    // --- Bordures pour séparer les boutons ---
+    &:first-of-type {
+      border-right: v.$border-width-sm solid v.$color-border;
+      // Les coins sont hérités du parent, pas besoin de les redéfinir ici
     }
+
+    // --- État actif ---
+    &.active {
+      background-color: v.$color-disabled;
+      font-weight: v.$font-weight-bold;
+    }
+
+    // --- État de survol (si non actif) ---
+    &:hover:not(.active) {
+      background-color: v.$color-border;
+    }
+  }
 }
 
-/* Styles pour mobile */
-@media screen and (max-width: 900px) {
-    .baseLayerToggle {
-        button {
-            padding: 6px 10px;
-            font-size: 12px;
-        }
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  .baseLayerToggle {
+    // Positionnement légèrement ajusté pour mobile
+    top: v.$spacing-xs;
+    right: v.$spacing-xs;
+
+    button {
+      // Boutons plus compacts sur mobile
+      padding: v.$spacing-xxs v.$spacing-xs;
+      font-size: v.$font-size-xs;
     }
+  }
 }

@@ -1,18 +1,10 @@
-// .container {
-//     position: relative;
-//     width: 100%;
-//     padding: 10px;
-//     display: flex;
-//     align-items: flex-start; // Aligne les éléments en haut
-//     justify-content: center;
-//     gap: 0.5rem
-// }
+@use '../../assets/variables' as styles;
 
 .pageContainer {
     width: 100%;
-    padding: 10px;
+    padding: styles.$spacing-md; // 1rem équivaut à 16px par défaut, ajusté de 10px
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 0.5rem;
+    gap: styles.$spacing-xs; // 0.5rem
 }

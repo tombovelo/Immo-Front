@@ -1,4 +1,4 @@
-// src/components/organisms/EditProprietaireForm/EditProprietaireForm.module.scss
+// c/Users/sacha/Desktop/DevoirITU/ImmoProject/user-front/src/components/organisms/EditPhotoForm/EditPhotoForm.module.scss
 
 // 1. Importation des variables globales
 @use '../../../assets/variables' as v;
@@ -7,7 +7,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: v.$spacing-md;
+  gap: v.$spacing-md; // Espacement entre les champs
   width: 100%;
 }
 
@@ -18,34 +18,27 @@
   border-radius: v.$border-radius-lg;
   box-shadow: v.$shadow-md;
   border: v.$border-width-sm solid v.$color-border;
-  max-width: 450px;
+  width: 100%;
+  max-width: 450px; // Largeur maximale pour la lisibilité
+  margin: v.$spacing-xl auto; // Centre le formulaire sur la page
 }
 
 .title {
-  color: v.$color-secondary;
   font-size: v.$font-size-h2;
+  font-weight: v.$font-weight-semibold;
   text-align: center;
+  color: v.$color-secondary;
   margin-bottom: v.$spacing-md;
   padding-bottom: v.$spacing-md;
   border-bottom: v.$border-width-sm solid v.$color-border;
 }
 
-.multiFields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: v.$spacing-md;
-  align-items: center;
-}
-
 // --- Styles Responsives ---
-@media (max-width: v.$breakpoint-md) {
+@media (max-width: v.$breakpoint-sm) { // Pour les petits mobiles (<= 576px)
   // La responsivité s'applique uniquement à la version autonome
   .standalone {
     padding: v.$spacing-lg v.$spacing-md;
     gap: v.$spacing-sm;
-  }
-
-  .multiFields {
-    grid-template-columns: 1fr; // Passe à une seule colonne sur mobile
+    margin: v.$spacing-md auto;
   }
 }

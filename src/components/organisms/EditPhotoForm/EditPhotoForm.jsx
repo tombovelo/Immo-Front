@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../../molecules/InputField/InputField";
 import SelectField from "../../molecules/SelectField/SelectField";
 import Button from "../../atoms/Button/Button";
-import styles from "../PhotoForm/PhotoForm.module.scss"; // Réutilisation des styles de PhotoForm
+import styles from "./EditPhotoForm.module.scss";
 import TextareaField from "../../molecules/TextAreaField/TextAreaField";
 import { toast } from "react-toastify";
 import { getAlbumAPI } from "../../../services/AlbumService";

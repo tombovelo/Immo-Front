@@ -1,7 +1,10 @@
-@use '../../../assets/color' as variable;
+// src/components/molecules/AlbumItem/AlbumItem.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
-// Animation pour l'apparition initiale de la carte
+// --- Animations (inchangées) ---
 @keyframes slideInFromRightCard {
   from {
     transform: translateX(30px);
@@ -13,7 +16,6 @@
   }
 }
 
-// Animations pour le carrousel d'images
 @keyframes slideOutToLeft {
   to {
     transform: translateX(-100%);
@@ -29,35 +31,41 @@
   }
 }
 
+// --- Styles du composant ---
 .card {
-  background-color: #fff;
-  border-radius: 8px;
+  // --- Structure et apparence ---
+  background-color: v.$color-background-light;
+  border-radius: v.$border-radius-md;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid variable.$color-border;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: v.$shadow-md; // Ombre par défaut
+  border: v.$border-width-sm solid v.$color-border;
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-width: 500px;
+  max-width: 500px; // Contrainte de layout pour la lisibilité
+
+  // --- Animation et transitions ---
   opacity: 0;
   animation: slideInFromRightCard 0.6s ease-out forwards;
+  transition: 
+    transform v.$transition-speed-normal v.$transition-easing, 
+    box-shadow v.$transition-speed-normal v.$transition-easing;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px color.change(color.adjust(variable.$color-secondary, $lightness: -10%), $alpha: 0.1);
+    transform: translateY(-#{v.$spacing-xxs}); // Léger soulèvement
+    box-shadow: v.$shadow-lg; // Ombre plus prononcée au survol
   }
 }
 
 .imageContainer {
   width: 100%;
-  height: 180px; // Hauteur fixe obligatoire pour le positionnement absolu
+  height: 180px; // Hauteur fixe pour le carrousel
   position: relative;
-  overflow: hidden; // Cache les parties des images qui débordent
-  background-color: variable.$color-background-light; // Couleur de fond si une image charge
+  overflow: hidden;
+  background-color: v.$color-disabled; // Fond en attendant le chargement de l'image
 
   img {
-    position: absolute; // SUPERPOSE les images les unes sur les autres
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -67,38 +75,38 @@
 }
 
 .content {
-  padding: 1rem;
+  padding: v.$spacing-md; // Espacement interne
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  flex-grow: 1;
+  gap: v.$spacing-sm; // Espacement entre les sections
+  flex-grow: 1; // Permet au contenu de remplir l'espace vertical
 
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: relative;
+    align-items: flex-start; // Aligne les éléments en haut
+    gap: v.$spacing-sm; // Espace entre le titre et les boutons
 
     .title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: variable.$color-secondary;
+      font-size: v.$font-size-xl;
+      font-weight: v.$font-weight-semibold;
+      color: v.$color-secondary;
       margin: 0;
+      // Empêche le titre de déborder s'il est trop long
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      flex-grow: 1; // Permet au titre de prendre l'espace disponible
     }
 
     .actionButtons {
       display: flex;
-      gap: variable.$gap;
-      position: absolute;
-      bottom: 0px;
-      right: 10px;
+      gap: v.$spacing-xs; // Espace entre les boutons d'action
+      flex-shrink: 0; // Empêche les boutons de se réduire
     
       .deleteButton {
           &:hover {
-              color: red;
+              color: v.$color-error; // Utilise la couleur d'erreur pour la suppression
           }
       }
     }
@@ -106,20 +114,45 @@
 
   .meta {
     display: flex;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    color: variable.$color-text-secondary;
-    border-top: 1px solid variable.$color-border;
-    padding-top: 0.75rem;
-    margin-top: auto;
+    gap: v.$spacing-sm; // Espace entre les métadonnées
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+    border-top: v.$border-width-sm solid v.$color-border;
+    padding-top: v.$spacing-sm;
+    margin-top: auto; // Pousse les métadonnées en bas de la carte
   }
 }
 
-// Classes pour piloter les animations du carrousel
+// --- Classes d'animation du carrousel ---
 .slideOut {
   animation: slideOutToLeft 0.5s ease-in-out forwards;
 }
 
 .slideIn {
   animation: slideInFromRight 0.5s ease-in-out forwards;
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  .imageContainer {
+    height: 160px; // Image légèrement plus petite sur mobile
+  }
+
+  .content {
+    padding: v.$spacing-sm; // Padding réduit
+    gap: v.$spacing-xs;
+
+    .header {
+      gap: v.$spacing-xs;
+
+      .title {
+        font-size: v.$font-size-lg; // Titre légèrement plus petit
+      }
+    }
+
+    .meta {
+      padding-top: v.$spacing-xs;
+      font-size: v.$font-size-xs; // Métadonnées plus petites
+    }
+  }
 }

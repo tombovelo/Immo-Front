@@ -1,11 +1,13 @@
+@use '../../assets/variables' as styles;
+
 .container {
-    padding: 1rem;
+    padding: styles.$spacing-md;
     width: 100%;
 }
 
 .loading {
-    padding: 2rem;
+    padding: styles.$spacing-xl;
     text-align: center;
-    font-size: 1.2rem;
-    color: #555;
+    font-size: styles.$font-size-lg;
+    color: styles.$color-text-secondary;
 }

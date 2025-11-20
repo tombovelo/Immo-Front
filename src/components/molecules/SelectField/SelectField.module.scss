@@ -1,57 +1,105 @@
-@use '../../../assets/color' as variable;
+// src/components/molecules/SelectField/SelectField.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .field {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: v.$spacing-sm; // Ajoute un espacement sous chaque champ
 }
 
 .error {
-  color: variable.$color-error;
-  font-size: variable.$font-size-error;
-  margin-top: 4px;
+  color: v.$color-error;
+  font-size: v.$font-size-sm;
+  margin-top: v.$spacing-xxs;
 }
 
-// Styles globaux pour surcharger react-select
+// --- Styles globaux pour surcharger react-select ---
 // Le préfixe "custom-select" est défini dans le composant SelectField.jsx
 :global {
+  // --- Le conteneur principal du select ---
   .custom-select__control {
-    min-height: 44px;
-    font-size: variable.$font-size; // 16px pour éviter le zoom sur iOS
-    margin-top: 5px;
-    border: 1px solid variable.$color-border;
+    min-height: 44px; // Hauteur minimale pour l'accessibilité tactile
+    font-size: v.$font-size-base;
+    border: v.$border-width-sm solid v.$color-border;
+    border-radius: v.$border-radius-md; // Cohérence avec les autres inputs
     box-shadow: none !important;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color v.$transition-speed-normal v.$transition-easing, box-shadow v.$transition-speed-normal v.$transition-easing;
 
     &:hover {
-      border-color: variable.$color-primary;
+      border-color: v.$color-primary;
     }
   }
 
+  // --- État focus ---
   .custom-select__control--is-focused {
-    border-color: variable.$color-primary !important;
-    box-shadow: 0 0 0 3px color.adjust(variable.$color-primary, $lightness: 35%) !important;
+    border-color: v.$color-primary !important;
+    box-shadow: 0 0 0 v.$spacing-xxs color.adjust(v.$color-primary, $lightness: 40%) !important;
+  }
+  
+  // --- État désactivé ---
+  .custom-select__control--is-disabled {
+    background-color: v.$color-disabled;
+    color: v.$color-text-disabled;
   }
 
-  .custom-select__placeholder,
-  .custom-select__single-value {
+  // --- Placeholder et valeur sélectionnée ---
+  .custom-select__placeholder {
+    color: v.$color-text-secondary;
     text-align: center;
     width: 100%;
   }
+  
+  .custom-select__single-value {
+    text-align: center;
+    width: 100%;
+    color: v.$color-text-primary;
+  }
 
+  // --- Le menu déroulant ---
+  .custom-select__menu {
+    border-radius: v.$border-radius-md;
+    box-shadow: v.$shadow-lg;
+    overflow: hidden; // Pour que le border-radius s'applique aux options
+    z-index: v.$z-index-dropdown; // Assure que le menu est au-dessus des autres éléments
+  }
+
+  // --- Les options dans le menu ---
   .custom-select__option {
     text-align: center;
-    transition: background-color 0.2s ease;
-    font-size: variable.$font-size;
+    transition: background-color v.$transition-speed-fast v.$transition-easing;
+    font-size: v.$font-size-base;
+    cursor: pointer;
   }
 
+  // --- Option survolée/focus ---
   .custom-select__option--is-focused {
-    background-color: color.adjust(variable.$color-primary, $lightness: 40%);
+    background-color: rgba(v.$color-primary, 0.1);
+    color: v.$color-text-primary;
   }
 
+  // --- Option sélectionnée ---
   .custom-select__option--is-selected {
-    background-color: variable.$color-primary;
-    color: white;
+    background-color: v.$color-primary;
+    color: v.$color-text-light;
+  }
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  :global {
+    .custom-select__control,
+    .custom-select__option {
+      font-size: v.$font-size-sm;
+    }
+    .custom-select__control {
+      min-height: 40px;
+    }
+  }
+  .error {
+    font-size: v.$font-size-xs;
   }
 }

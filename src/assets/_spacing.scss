@@ -1,0 +1,22 @@
+// src/assets/_spacing.scss
+
+// Échelle d'espacement basée sur des unités rem pour la réactivité
+$spacing-xxs: 0.25rem; // 4px (si html font-size est 16px)
+$spacing-xs: 0.5rem;  // 8px
+$spacing-sm: 0.75rem; // 12px
+$spacing-md: 1rem;    // 16px
+$spacing-lg: 1.5rem;  // 24px
+$spacing-xl: 2rem;    // 32px
+$spacing-xxl: 3rem;   // 48px
+$spacing-xxxl: 4rem;  // 64px
+
+// Variables spécifiques pour la lisibilité (optionnel, mais recommandé)
+$gap-default: $spacing-md;
+$padding-default: $spacing-md;
+$margin-default: $spacing-md;
+
+// Exemples de variables pour des composants spécifiques si nécessaire
+$button-padding-y: $spacing-sm;
+$button-padding-x: $spacing-lg;
+$button-padding-y-mobile: $spacing-xs;
+$button-padding-x-mobile: $spacing-md;

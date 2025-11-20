@@ -1,32 +1,41 @@
-@use '../../../assets/color' as variable;
+// src/components/molecules/MyNavLink/MyNavLink.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 // --- Structure de base commune à tous les liens ---
 .navLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: v.$spacing-xxs; // Espacement entre l'icône et le texte (ex: 4px)
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.6rem 1rem;
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: variable.$font-size;
-  border: 1px solid transparent;
+  transition: all v.$transition-speed-normal v.$transition-easing;
+  padding: v.$spacing-xs v.$spacing-sm; // Padding vertical et horizontal (ex: 8px 12px)
+  border-radius: v.$border-radius-md; // Coins légèrement arrondis
+  font-weight: v.$font-weight-medium; // Police semi-épaisse
+  font-size: v.$font-size-base; // Taille de police de base (ex: 16px)
+  border: v.$border-width-sm solid transparent; // Bordure transparente par défaut
 }
 
 .icon {
   flex-shrink: 0;
+  // Taille de l'icône (un peu plus petite que le texte)
+  font-size: v.$font-size-lg;
+}
+
+.text {
+  // Couleur du texte par défaut
+  color: v.$color-text-primary;
 }
 
 // --- Variante #1: Style de lien simple (pour "Maisons", "Profil") ---
 .link {
-  color: variable.$color-text-light;
+  color: v.$color-text-secondary; // Couleur plus discrète
   background-color: transparent;
   position: relative;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
+  padding: v.$spacing-xs v.$spacing-sm; // Padding légèrement réduit
 
   &::after {
     content: '';
@@ -35,9 +44,9 @@
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 2px;
-    background-color: variable.$color-primary;
-    transition: width 0.3s ease;
+    height: v.$border-width-sm; // Hauteur de la ligne
+    background-color: v.$color-primary;
+    transition: width v.$transition-speed-normal v.$transition-easing;
   }
 
   &:hover::after,
@@ -46,40 +55,54 @@
   }
 
   &.active {
-    color: variable.$color-primary;
-    font-weight: bold;
+    color: v.$color-primary;
+    font-weight: v.$font-weight-bold; // Police plus grasse pour l'état actif
   }
 }
 
 // --- Variante #2: Style de bouton primaire (pour "S'inscrire", "Recherche", "Connecter") ---
 .primaryButton {
-  color: variable.$color-text-light;
-  background-color: variable.$color-primary;
-  border-color: variable.$color-primary;
-  padding: 0.6rem 1.2rem;
+  color: v.$color-text-light;
+  background-color: v.$color-primary;
+  border-color: v.$color-primary;
+  padding: v.$spacing-xs v.$spacing-md; // Padding légèrement plus grand
 
   &:hover {
-    background-color: color.adjust(variable.$color-primary, $lightness: -5%);
+    background-color: color.adjust(v.$color-primary, $lightness: -5%);
   }
 }
 
 // --- Variante #3: Style de bouton de déconnexion ---
 .logoutButton {
-  color: variable.$color-accent;
+  color: v.$color-accent;
   background-color: transparent;
-  border-color: variable.$color-accent;
-  padding: 0.6rem 1.2rem;
+  border-color: v.$color-accent;
+  padding: v.$spacing-xs v.$spacing-md;
 
   &:hover {
-    background-color: variable.$color-accent;
-    color: variable.$color-text-light;
+    background-color: v.$color-accent;
+    color: v.$color-text-light;
   }
 }
 
 // --- Styles Responsives ---
-@media screen and (max-width: 415px) {
-  .text {
-    font-size: 0.7rem;
+// Pour les écrans plus petits que le breakpoint 'md' (768px)
+@media (max-width: v.$breakpoint-md) {
+  .navLink {
+    font-size: v.$font-size-sm; // Réduit la taille de la police
+    padding: v.$spacing-xxs v.$spacing-xs; // Réduit le padding
+    gap: v.$spacing-xxs; // Réduit l'espacement entre l'icône et le texte
+  }
+
+  .icon {
+    font-size: v.$font-size-base; // Réduit la taille de l'icône
   }
 }
 
+// Pour les écrans très petits (téléphones en mode portrait)
+@media (max-width: v.$breakpoint-sm) {
+  .text {
+    // On peut même cacher le texte sur les très petits écrans si nécessaire
+    display: none;
+  }
+}

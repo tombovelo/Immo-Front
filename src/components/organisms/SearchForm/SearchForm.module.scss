@@ -1,30 +1,30 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as styles;
 
 .searchForm {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 2rem;
+    background-color: #fff; // Fond blanc pour une lisibilité maximale
+    padding: styles.$spacing-xl;
+    border-radius: styles.$border-radius-md;
+    box-shadow: styles.$shadow-md;
+    margin-bottom: styles.$spacing-xl;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; // Espace entre le titre, les rangées de champs et le bouton
+    gap: styles.$spacing-lg; // Espace entre le titre, les rangées de champs et le bouton
     width: 100%;
 }
 
 .formTitle {
-    font-size: 1.8rem;
-    color: variable.$color-text-primary;
+    font-size: styles.$font-size-h2;
+    color: styles.$color-text-primary;
     text-align: center;
     margin: 0;
 }
 
 .formRow {
     display: flex;
-    gap: 1.5rem;
+    gap: styles.$spacing-lg;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; // Aligne les champs par le bas pour une meilleure apparence
 
     // Chaque champ dans la rangée prend une part égale de l'espace
     > * {
@@ -33,9 +33,10 @@
     }
 
     // Sur les écrans de type tablette et mobile, on empile les champs
-    @media (max-width: 900px) {
+    @media (max-width: styles.$breakpoint-lg) {
         flex-direction: column;
-        gap: 1rem;
+        gap: styles.$spacing-md;
+        align-items: stretch; // Les champs prennent toute la largeur
     }
 }
 
@@ -44,8 +45,8 @@
     justify-content: center;
 }
 
+// Style spécifique pour le bouton de recherche pour le rendre plus proéminent
 .buttonRow > button {
-    padding: 0.8rem 2.5rem;
-    font-size: 1.1rem;
+    padding: styles.$spacing-sm styles.$spacing-xxl;
+    font-size: styles.$font-size-lg;
 }
-

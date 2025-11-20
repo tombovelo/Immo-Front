@@ -1,10 +1,18 @@
-@use '../../../assets/color' as color;
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 
 .label {
+  // --- Structure et espacement ---
   display: block; // Pour que le label se place au-dessus de l'input
-  margin-bottom: 0.4rem;
-  font-size: color.$font-size;
-  font-weight: 500; // Un peu plus gras pour se démarquer
-  color: color.$color-text-secondary; // Couleur de texte secondaire pour un look professionnel
-}
+  margin-bottom: v.$spacing-xxs; // Marge inférieure réduite (ex: 4px)
+
+  // --- Typographie ---
+  font-family: v.$font-family-primary;
+  font-size: v.$font-size-sm; // Taille de police de base pour un label (ex: 14px)
+  font-weight: v.$font-weight-medium; // Graisse moyenne (500)
+  color: v.$color-text-secondary; // Couleur de texte secondaire pour un look professionnel
   
+  // --- Transitions ---
+  // Utile si vous voulez changer la couleur du label au focus de l'input parent
+  transition: color v.$transition-speed-normal v.$transition-easing;
+}

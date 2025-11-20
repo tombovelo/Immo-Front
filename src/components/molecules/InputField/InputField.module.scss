@@ -1,33 +1,56 @@
-@use '../../../assets/color' as color;
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 
 .field {
+  // --- Structure de base ---
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: v.$spacing-sm; // Ajoute un espacement sous chaque champ
 }
 
 .inputWrapper {
+  // --- Structure interne ---
   position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem; // Espace entre l'aperçu et le champ input
+  gap: v.$spacing-sm; // Espace entre l'aperçu et le champ input
 }
 
 .previewImage {
+  // --- Aperçu d'image ---
   position: absolute;
-  right: 4px;
+  right: v.$spacing-xxs; // Petit espacement par rapport au bord droit
+  top: 50%; // Centrage vertical
+  transform: translateY(-50%);
   height: 36px;
   width: 50px;
-  align-items: center;
-  justify-content: flex-end;
   object-fit: cover;
-  border-radius: 8px;
-  flex-shrink: 0; // Empêche l'image de rétrécir si l'espace manque
+  border-radius: v.$border-radius-sm;
+  flex-shrink: 0; // Empêche l'image de rétrécir
+  border: v.$border-width-sm solid v.$color-border; // Ajoute une bordure discrète
+  background-color: v.$color-background-light; // Fond pour une meilleure visibilité
 }
 
 .error {
-  color: color.$color-error;
-  font-size: color.$font-size-error;
-  margin-top: 4px;
+  // --- Message d'erreur ---
+  color: v.$color-error;
+  font-size: v.$font-size-sm; // Taille de police plus petite pour les erreurs
+  margin-top: v.$spacing-xxs; // Petit espacement au-dessus
 }
 
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  .inputWrapper {
+    gap: v.$spacing-xs; // Réduit l'espacement sur mobile
+  }
+
+  .previewImage {
+    height: 30px; // Image légèrement plus petite sur mobile
+    width: 40px;
+  }
+
+  .error {
+    font-size: v.$font-size-xs; // Message d'erreur encore plus petit sur mobile
+  }
+}

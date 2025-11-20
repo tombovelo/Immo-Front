@@ -1,85 +1,89 @@
-@use '../../../assets/color' as variable;
+// c/Users/sacha/Desktop/DevoirITU/ImmoProject/user-front/src/components/organisms/EditMap/EditMap.module.scss
 
-.mapContainer { // ce style est surchwrger du foter parent
-    z-index: 1;
-    border-radius: 8px;
-    border: 1px solid variable.$color-border;
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+
+.mapContainer {
+  z-index: 1; // Assure que la carte est bien positionnée dans le flux de la page
+  border-radius: v.$border-radius-md;
+  border: v.$border-width-sm solid v.$color-border;
 }
 
-// Styles for the popup content, inspired by MaisonCard
+// --- Styles pour le contenu de la popup ---
+// Ces styles sont inspirés de MaisonCard pour une cohérence visuelle
 .popupContent {
-    width: 240px; // A bit wider for more content
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    // Leaflet adds its own padding, so we don't need extra padding here.
+  width: 240px;
+  font-family: v.$font-family-primary;
 }
 
 .popupImage {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    background-color: variable.$color-disabled;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: v.$border-radius-sm;
+  margin-bottom: v.$spacing-sm;
+  background-color: v.$color-disabled;
 }
 
 .villeTransaction {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid variable.$color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: v.$spacing-xs;
+  margin-bottom: v.$spacing-xs;
+  border-bottom: v.$border-width-sm solid v.$color-border;
 
-    .ville {
-        font-weight: 600;
-        color: variable.$color-text-primary;
-        margin: 0;
-        font-size: 0.9rem;
-    }
+  .ville {
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+    margin: 0;
+    font-size: v.$font-size-sm;
+  }
 
-    .typeTransaction {
-        background-color: variable.$color-secondary;
-        color: variable.$color-text-light;
-        padding: 0.2rem 0.6rem;
-        border-radius: 12px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        margin: 0;
-    }
+  .typeTransaction {
+    background-color: v.$color-secondary;
+    color: v.$color-text-light;
+    padding: v.$spacing-xxs v.$spacing-xs;
+    border-radius: v.$border-radius-full;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-medium;
+    margin: 0;
+  }
 }
 
 .details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
 }
 
 .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$spacing-md;
+  font-size: v.$font-size-sm;
 }
 
-/* Styles mobiles pour le composant Map */
-@media screen and (max-width: 900px) {
-    .container {
-        padding: 0.25rem;
-    }
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-lg) { // Utilise le breakpoint 992px
+  .container {
+    padding: v.$spacing-xxs;
+  }
 
-    :global(.leaflet-top.leaflet-left) {
-        top: auto !important;
-        bottom: 2.5rem !important;
-        left: auto !important;
-        right: 0.625rem !important;
-        display: flex !important;
-        flex-direction: column-reverse !important;
-    }
+  // Cible les contrôles Leaflet de manière globale pour les repositionner sur mobile
+  :global(.leaflet-top.leaflet-left) {
+    top: auto !important;
+    bottom: v.$spacing-xl !important; // Positionne en bas
+    left: auto !important;
+    right: v.$spacing-sm !important; // Positionne à droite
+    display: flex !important;
+    flex-direction: column-reverse !important; // Inverse l'ordre (zoom en bas)
+  }
 
-    :global(.leaflet-control-zoom) {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        border-radius: 0.5rem;
-        overflow: hidden;
-    }
+  :global(.leaflet-control-zoom) {
+    box-shadow: v.$shadow-lg;
+    border-radius: v.$border-radius-md;
+    overflow: hidden;
+  }
 }

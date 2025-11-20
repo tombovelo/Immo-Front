@@ -1,57 +1,68 @@
-// Assurez-vous que votre fichier de variables est importé, par exemple avec @use
-@use '../../../assets/color' as color;
+// c/Users/sacha/Desktop/DevoirITU/ImmoProject/user-front/src/components/organisms/EditAlbumForm/EditAlbumForm.module.scss
 
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+
+// Styles de base pour la disposition interne du formulaire
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: color.$gap;
-    width: 100%;
-  }
-  
-  // Styles du conteneur pour la version "autonome" (utilisée sur une page)
-  .standalone {
-    background: linear-gradient(180deg, white 0%, rgba(color.$color-primary, 0.1) 100%);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid color.$color-border;
-    max-width: 450px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-md; // Espacement entre les champs
+  width: 100%;
+}
+
+// Styles du conteneur pour la version "autonome" (utilisée sur une page)
+.standalone {
+  background: linear-gradient(180deg, v.$color-background-light 0%, rgba(v.$color-primary, 0.1) 100%);
+  padding: v.$spacing-xl;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$shadow-md;
+  border: v.$border-width-sm solid v.$color-border;
+  max-width: 450px;
+}
 
 .houseInfo {
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    padding: 1rem;
+  margin-bottom: v.$spacing-lg;
+  border-radius: v.$border-radius-md;
+  padding: v.$spacing-md;
 }
 
 .houseInfoTitle {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: color.$color-text-primary;
-    border-bottom: 1px solid color.$color-border;
-    padding-bottom: color.$padding-bottom-title;
+  margin-top: 0;
+  margin-bottom: v.$spacing-md;
+  font-size: v.$font-size-lg;
+  color: v.$color-text-primary;
+  border-bottom: v.$border-width-sm solid v.$color-border;
+  padding-bottom: v.$spacing-sm;
 }
 
 .houseDetails {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: calc(color.$gap * 2); // Correspond à 1rem si $gap est 0.5rem
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: v.$spacing-md;
 }
 
 .houseImage {
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid color.$color-border;
-    width: 100%;
+  object-fit: cover;
+  border-radius: v.$border-radius-sm;
+  border: v.$border-width-sm solid v.$color-border;
+  width: 100%;
 }
 
 .houseAddress {
-    margin: 0;
-    font-size: 0.95rem;
-    color: color.$color-text-secondary;
-    font-weight: 500;
+  margin: 0;
+  font-size: v.$font-size-sm;
+  color: v.$color-text-secondary;
+  font-weight: v.$font-weight-medium;
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  // La responsivité s'applique uniquement à la version autonome
+  .standalone {
+    padding: v.$spacing-lg v.$spacing-md;
+    gap: v.$spacing-sm;
+  }
 }

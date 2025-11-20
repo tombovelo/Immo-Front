@@ -1,24 +1,42 @@
-@use '../../../assets/color' as color;
-
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 
 .row {
   display: flex;
   align-items: center;
-  gap: color.$gap;
+  gap: v.$spacing-xs; // Espacement entre l'icône et le texte
 }
 
 .icon {
-  font-size: color.$font-size;
+  // Taille de l'icône par défaut
+  font-size: v.$font-size-lg; 
   display: flex;
   align-items: center;
-  color: color.$color-text-secondary;
+  color: v.$color-text-secondary; // Couleur par défaut de l'icône
 }
 
 .text {
-  line-height: 1;
-  color: color.$color-text-primary;
-  font-size: color.$font-size;
+  line-height: v.$line-height-body; // Hauteur de ligne cohérente
+  color: v.$color-text-primary; // Couleur par défaut du texte
+  font-size: v.$font-size-base; // Taille de police par défaut du texte
 }
+
+// --- Styles Responsives ---
+// Pour les écrans plus petits que le breakpoint 'md' (768px)
+@media (max-width: v.$breakpoint-md) {
+  .row {
+    gap: v.$spacing-xxs; // Réduit l'espacement entre l'icône et le texte sur mobile
+  }
+
+  .icon {
+    font-size: v.$font-size-base; // Réduit la taille de l'icône sur mobile
+  }
+
+  .text {
+    font-size: v.$font-size-sm; // Réduit la taille du texte sur mobile
+  }
+}
+
 
 
 

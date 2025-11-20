@@ -1,47 +1,82 @@
-@use '../../../assets/color' as variable; // Import your centralized color variables
+// c/Users/sacha/Desktop/DevoirITU/ImmoProject/user-front/src/components/organisms/LoginForm/LoginForm.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
+@use 'sass:color';
 
 .form {
-  // background: variable.$color-background-light; // Using the light background color
-  background: linear-gradient(180deg, white 0%, rgba(variable.$color-primary, 0.1) 100%);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;          // occupe 90% sur petit écran
-  max-width: 300px;
+  // Utilisation d'un dégradé de fond cohérent avec votre design system
+  background: linear-gradient(180deg, v.$color-background-light 0%, rgba(v.$color-primary, 0.1) 100%);
+  padding: v.$spacing-xl; // Padding généreux
+  border-radius: v.$border-radius-lg; // Coins arrondis
+  box-shadow: v.$shadow-md; // Ombre standard
+  width: 100%;
+  max-width: 350px; // Largeur maximale ajustée pour un formulaire de connexion
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: v.$spacing-md; // Espacement entre les éléments du formulaire
 }
 
 .title {
-  font-size: variable.$font-size-title;
-  font-weight: 600;
+  font-size: v.$font-size-h2; // Taille de titre standard
+  font-weight: v.$font-weight-semibold;
   text-align: center;
-  margin-bottom: variable.$margin-bottom-title;
-  padding-bottom: variable.$padding-bottom-title;
-  border-bottom: 1px solid variable.$color-border;
+  margin-bottom: v.$spacing-md;
+  padding-bottom: v.$spacing-md;
+  border-bottom: v.$border-width-sm solid v.$color-border; // Bordure fine
+  color: v.$color-secondary; // Couleur de titre
 }
 
 .error {
-  color: variable.$color-error; // Using the defined error color
-  font-size: 0.9rem;
+  color: v.$color-error; // Couleur d'erreur
+  font-size: v.$font-size-sm; // Taille de police pour les messages d'erreur
   text-align: center;
 }
 
 .loginPrompt {
-  margin-top: 0.5rem;
+  margin-top: v.$spacing-xs; // Petit espacement
   text-align: center;
-  font-size: 0.9rem;
-  color: variable.$color-text-secondary;
+  font-size: v.$font-size-sm; // Taille de police pour le prompt
+  color: v.$color-text-secondary; // Couleur de texte secondaire
 }
 
 .loginLink {
-  color: variable.$color-primary; // Utilisez votre variable de couleur primaire
+  color: v.$color-primary; // Couleur primaire pour le lien
   text-decoration: none;
-  font-weight: bold;
+  font-weight: v.$font-weight-bold;
 
   &:hover {
     text-decoration: underline;
   }
 }
 
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) { // Pour tablettes et mobiles (<= 768px)
+  .form {
+    padding: v.$spacing-lg v.$spacing-md; // Padding réduit
+    gap: v.$spacing-sm; // Espacement réduit
+    max-width: 90%; // Le formulaire prend plus de largeur sur les petits écrans
+  }
+
+  .title {
+    font-size: v.$font-size-h3; // Titre plus petit
+    margin-bottom: v.$spacing-sm;
+    padding-bottom: v.$spacing-xs;
+  }
+
+  .error,
+  .loginPrompt,
+  .loginLink {
+    font-size: v.$font-size-xs; // Texte plus petit
+  }
+}
+
+@media (max-width: v.$breakpoint-sm) { // Pour petits mobiles (<= 576px)
+  .form {
+    padding: v.$spacing-md v.$spacing-sm; // Padding encore plus réduit
+    gap: v.$spacing-xs; // Espacement minimal
+  }
+  .title {
+    font-size: v.$font-size-xl; // Taille de titre adaptée
+  }
+}

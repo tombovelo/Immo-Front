@@ -1,55 +1,62 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .card {
-  background-color: #fff;
-  border-radius: 12px; // Bords plus arrondis pour un look moderne
+  // --- Structure et Apparence ---
+  background-color: v.$color-background-light;
+  border-radius: v.$border-radius-lg;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  border: 1px solid variable.$color-border;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: v.$shadow-md;
+  border: v.$border-width-sm solid v.$color-border;
   display: flex;
   flex-direction: column;
-  // max-width: 500px;
+  transition: transform v.$transition-speed-normal v.$transition-easing,
+    box-shadow v.$transition-speed-normal v.$transition-easing;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-#{v.$spacing-xxs});
+    box-shadow: v.$shadow-lg;
   }
 }
 
 .cardHeader {
+  // --- Header Structure ---
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: variable.$color-background-light;
-  border-bottom: 1px solid variable.$color-border;
+  padding: v.$spacing-sm v.$spacing-md;
+  background-color: v.$color-background-light;
+  border-bottom: v.$border-width-sm solid v.$color-border;
 
   .ville {
-    font-weight: 600;
-    color: variable.$color-text-primary;
+    // --- City Text ---
+    font-weight: v.$font-weight-semibold;
+    font-size: v.$font-size-base;
+    color: v.$color-text-primary;
     margin: 0;
   }
 }
 
 .transactionBadge {
-  background-color: variable.$color-secondary;
-  color: variable.$color-text-light;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  // --- Badge Style ---
+  background-color: v.$color-secondary;
+  color: v.$color-text-light;
+  padding: v.$spacing-xxs v.$spacing-sm;
+  border-radius: v.$border-radius-full;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .imageContainer {
+  // --- Image Container ---
   position: relative;
   width: 100%;
   height: 200px;
 
   img {
+    // --- Image Style ---
     display: block;
     width: 100%;
     height: 100%;
@@ -58,77 +65,133 @@
 }
 
 .addressOverlay {
+  // --- Overlay Style ---
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem;
+  padding: v.$spacing-md;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
-  
-  // Style directement l'IconText pour un texte blanc sur l'overlay
-  color: variable.$color-text-light;
-  > div { // Cible le conteneur interne de IconText
-    > span > svg { // Cible l'icône
-      color: variable.$color-text-light;
+  color: v.$color-text-light;
+
+  // --- Targeting IconText Component ---
+  > div {
+    > span > svg {
+      color: v.$color-text-light;
     }
   }
 }
 
 .cardBody {
-  padding: 1rem;
+  // --- Body Structure ---
+  padding: v.$spacing-md;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: v.$spacing-sm;
   flex-grow: 1;
 }
 
 .price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: variable.$color-primary;
-  margin: 0 0 0.5rem 0;
+  // --- Price Text ---
+  font-size: v.$font-size-h3;
+  font-weight: v.$font-weight-bold;
+  color: v.$color-primary;
+  margin: 0 0 v.$spacing-xs 0;
 }
 
 .statsGrid {
+  // --- Stats Grid Structure ---
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid variable.$color-border;
-  color: variable.$color-text-secondary;
-  font-size: 0.9rem;
+  gap: v.$spacing-md;
+  padding-bottom: v.$spacing-sm;
+  border-bottom: v.$border-width-sm solid v.$color-border;
+  color: v.$color-text-secondary;
+  font-size: v.$font-size-sm;
 }
 
 .statusBadge {
+  // --- Status Badge Style ---
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  align-self: flex-start; // Pour que le badge ne prenne que sa largeur
-  margin-top: 0.25rem;
+  gap: v.$spacing-xxs;
+  padding: v.$spacing-xxs v.$spacing-sm;
+  border-radius: v.$border-radius-full;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-semibold;
+  align-self: flex-start;
+  margin-top: v.$spacing-xxs;
 
   &.visible {
-    background-color: color.change(variable.$color-success, $alpha: 0.15);
-    color: color.adjust(variable.$color-success, $lightness: -15%);
-    svg { color: color.adjust(variable.$color-success, $lightness: -15%); }
+    background-color: color.change(v.$color-success, $alpha: 0.15);
+    color: color.adjust(v.$color-success, $lightness: -15%);
+
+    svg {
+      color: color.adjust(v.$color-success, $lightness: -15%);
+    }
   }
 
   &.hidden {
-    background-color: color.change(variable.$color-error, $alpha: 0.1);
-    color: color.adjust(variable.$color-error, $lightness: -10%);
-    svg { color: color.adjust(variable.$color-error, $lightness: -10%); }
+    background-color: color.change(v.$color-error, $alpha: 0.1);
+    color: color.adjust(v.$color-error, $lightness: -10%);
+
+    svg {
+      color: color.adjust(v.$color-error, $lightness: -10%);
+    }
   }
 }
 
 .cardFooter {
-  padding: 0 1rem 1rem;
-  margin-top: auto; // Pousse le footer en bas de la carte
+  // --- Footer Structure ---
+  padding: 0 v.$spacing-md v.$spacing-md;
+  margin-top: auto;
 
   button {
-    width: 100%; // Le bouton prend toute la largeur
+    // --- Button Style ---
+    width: 100%;
+  }
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: v.$breakpoint-md) {
+  .cardHeader {
+    padding: v.$spacing-xs v.$spacing-sm;
+
+    .ville {
+      font-size: v.$font-size-sm;
+    }
+  }
+
+  .transactionBadge {
+    font-size: v.$font-size-xs;
+    padding: v.$spacing-xxs v.$spacing-xs;
+  }
+
+  .imageContainer {
+    height: 160px; /* Adjust image height for smaller screens */
+  }
+
+  .addressOverlay {
+    padding: v.$spacing-sm;
+  }
+
+  .cardBody {
+    padding: v.$spacing-sm;
+    gap: v.$spacing-xs;
+  }
+
+  .price {
+    font-size: v.$font-size-lg;
+  }
+
+  .statsGrid {
+    font-size: v.$font-size-xs;
+    padding-bottom: v.$spacing-xs;
+    gap: v.$spacing-xs;
+  }
+
+  .cardFooter {
+    padding: 0 v.$spacing-sm v.$spacing-sm;
   }
 }

@@ -1,38 +1,38 @@
-@use '../../../assets/color' as variable;
+@use '../../../assets/variables' as styles;
 @use 'sass:color';
 
 // --- Base de la Navbar ---
 .navbar {
-  background-color: variable.$color-secondary;
-  height: 80px;
+  background-color: styles.$color-secondary;
+  height: 80px; // Hauteur spécifique conservée
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 styles.$spacing-xl;
   position: sticky;
   top: 0;
-  z-index: 3000;
+  z-index: styles.$z-index-sticky; // Utilisation d'une variable z-index
   width: 100%;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: styles.$shadow-sm;
 }
 
 // --- Logo et Marque ---
 .navbarLogo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: styles.$spacing-md;
 }
 
 .brandLink {
-  color: variable.$color-primary;
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: styles.$color-primary;
+  font-size: styles.$font-size-h2;
+  font-weight: styles.$font-weight-semibold;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color styles.$transition-speed-normal styles.$transition-easing;
 
   &:hover {
-    color: variable.$color-text-light;
+    color: styles.$color-text-light;
   }
 }
 
@@ -40,21 +40,21 @@
 .proprietaireInfo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: styles.$spacing-md;
   text-decoration: none;
 }
 
 .profileImage {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: styles.$border-radius-full;
   object-fit: cover;
-  border: 2px solid variable.$color-primary;
+  border: styles.$border-width-md solid styles.$color-primary;
 }
 
 .proprietaireName {
-  color: variable.$color-text-light;
-  font-weight: 500;
+  color: styles.$color-text-light;
+  font-weight: styles.$font-weight-medium;
 }
 
 // --- Conteneur du Menu (pour le layout flex) ---
@@ -71,20 +71,20 @@
   align-items: center;
   justify-content: center;
   list-style: none;
-  gap: 2rem;
-  flex-grow: 1; // Permet de centrer les liens
+  gap: styles.$spacing-xl;
+  flex-grow: 1;
   padding: 0;
   margin: 0;
 }
 
 .navbarLink {
-  color: variable.$color-text-light;
+  color: styles.$color-text-light;
   text-decoration: none;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative; // Pour le pseudo-élément
+  font-size: styles.$font-size-lg;
+  padding: styles.$spacing-xs styles.$spacing-md;
+  border-radius: styles.$border-radius-sm;
+  transition: background-color styles.$transition-speed-normal styles.$transition-easing, color styles.$transition-speed-normal styles.$transition-easing;
+  position: relative;
 
   &::after {
     content: '';
@@ -94,8 +94,8 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background-color: variable.$color-primary;
-    transition: width 0.3s ease;
+    background-color: styles.$color-primary;
+    transition: width styles.$transition-speed-normal styles.$transition-easing;
   }
 
   &:hover::after,
@@ -104,8 +104,8 @@
   }
 
   &.active {
-    color: variable.$color-primary;
-    font-weight: bold;
+    color: styles.$color-primary;
+    font-weight: styles.$font-weight-bold;
   }
 }
 
@@ -113,48 +113,47 @@
 .navbarAuth {
   display: flex;
   align-items: center;
-  gap: variable.$gap;
-  // justify-content: space-between;
+  gap: styles.$gap-default;
 }
 
 .authButton {
-  color: variable.$color-text-light;
+  color: styles.$color-text-light;
   text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: variable.$font-size;
+  padding: styles.$spacing-sm styles.$spacing-lg;
+  border-radius: styles.$border-radius-sm;
+  border: styles.$border-width-sm solid transparent;
+  transition: all styles.$transition-speed-normal styles.$transition-easing;
+  font-weight: styles.$font-weight-medium;
+  font-size: styles.$font-size-base;
 
   &:hover {
-    background-color: color.adjust(variable.$color-secondary, $lightness: 10%);
+    background-color: color.adjust(styles.$color-secondary, $lightness: 10%);
   }
 
   &.primary {
-    background-color: variable.$color-primary;
-    border-color: variable.$color-primary;
+    background-color: styles.$color-primary;
+    border-color: styles.$color-primary;
 
     &:hover {
-      background-color: color.adjust(variable.$color-primary, $lightness: -5%);
+      background-color: color.adjust(styles.$color-primary, $lightness: -5%);
     }
   }
 }
 
 .logoutButton {
   background-color: transparent;
-  color: variable.$color-accent;
-  border: 1px solid variable.$color-accent;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
+  color: styles.$color-accent;
+  border: styles.$border-width-sm solid styles.$color-accent;
+  padding: styles.$spacing-sm styles.$spacing-lg;
+  border-radius: styles.$border-radius-sm;
   cursor: pointer;
-  font-weight: 500;
-  font-size: variable.$font-size;
-  transition: all 0.3s ease;
+  font-weight: styles.$font-weight-medium;
+  font-size: styles.$font-size-base;
+  transition: all styles.$transition-speed-normal styles.$transition-easing;
 
   &:hover {
-    background-color: variable.$color-accent;
-    color: variable.$color-text-light;
+    background-color: styles.$color-accent;
+    color: styles.$color-text-light;
   }
 }
 
@@ -165,7 +164,7 @@
   background: transparent;
   border: none;
   padding: 0;
-  z-index: 3001; // Doit être au-dessus du reste
+  z-index: styles.$z-index-modal; // Doit être au-dessus du reste
 }
 
 .burgerBar {
@@ -173,17 +172,17 @@
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  background-color: variable.$color-text-light;
-  transition: all 0.3s ease-in-out;
+  background-color: styles.$color-text-light;
+  transition: all styles.$transition-speed-normal styles.$transition-easing;
 }
 
 // --- Styles Responsives ---
-@media screen and (max-width: 900px) {
+@media screen and (max-width: styles.$breakpoint-lg) {
   .navbarMenuWrapper {
     position: absolute;
-    top: 63px;
+    top: 80px; // Correspond à la hauteur de la navbar
     left: 0;
-    background-color: variable.$color-secondary;
+    background-color: styles.$color-secondary;
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -194,13 +193,13 @@
 
   .navbarLinks, .navbarAuth {
     width: 100%;
-    column-gap: 0.2rem;
-    font-size: 0.8rem;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: styles.$spacing-xs;
+    font-size: styles.$font-size-sm;
   }
   
   .navbarLinks {
-    margin-bottom: 1rem;
+    margin-bottom: styles.$spacing-md;
   }
 
   .navbarItem {
@@ -210,7 +209,7 @@
   
   .navbarLink {
     display: block;
-    padding: 1rem;
+    padding: styles.$spacing-md;
   }
 
   .navbarBurger {
@@ -220,8 +219,8 @@
   // --- État ouvert du menu mobile ---
   .showNavbar {
     .navbarMenuWrapper {
-      max-height: 500px;
-      padding: 1rem;
+      max-height: 500px; // Hauteur suffisante pour le contenu
+      padding: styles.$spacing-md 0;
     }
 
     .burgerBar:nth-child(1) {

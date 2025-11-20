@@ -1,4 +1,7 @@
-@use '../../../assets/color' as variable;
+// src/pages/Accueil/Accueil.module.scss
+
+// 1. Importation des variables globales
+@use '../../../assets/variables' as v;
 @use 'sass:color';
 
 .accueilContainer {
@@ -13,8 +16,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
-    padding: 2rem;
+    color: v.$color-text-light;
+    padding: v.$spacing-xxl v.$spacing-xl; // Espacement généreux
     background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
 
     .heroOverlay {
@@ -33,20 +36,16 @@
         animation: fadeIn 1s ease-in-out;
 
         h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            font-size: 3.8rem; // Taille de base pour les grands écrans
+            font-weight: v.$font-weight-bold;
+            margin-bottom: v.$spacing-lg;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-
-            @media (max-width: 768px) {
-                font-size: 2.8rem;
-            }
         }
 
         p {
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
-            line-height: 1.7;
+            font-size: v.$font-size-xl;
+            margin-bottom: v.$spacing-xxl;
+            line-height: v.$line-height-body;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -56,17 +55,17 @@
         .actionButtons {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: v.$spacing-lg;
             flex-wrap: wrap;
 
             .btn {
                 text-decoration: none;
-                padding: 1rem 2.5rem;
-                border-radius: 50px;
-                font-size: 1rem;
-                font-weight: 600;
-                transition: all 0.3s ease;
-                border: 2px solid transparent;
+                padding: v.$spacing-sm v.$spacing-xxl;
+                border-radius: v.$border-radius-full;
+                font-size: v.$font-size-base;
+                font-weight: v.$font-weight-semibold;
+                transition: all v.$transition-speed-normal v.$transition-easing;
+                border: v.$border-width-md solid transparent;
                 cursor: pointer;
                 display: inline-flex;
                 align-items: center;
@@ -74,30 +73,30 @@
             }
 
             .btnPrimary {
-                background-color: variable.$color-primary;
-                color: white;
-                box-shadow: 0 4px 15px rgba(color.adjust(variable.$color-primary, $alpha: -0.6), 0.4);
+                background-color: v.$color-primary;
+                color: v.$color-text-light;
+                box-shadow: v.$shadow-md;
 
                 &:hover {
-                    background-color: color.adjust(variable.$color-primary, $lightness: -8%);
+                    background-color: color.adjust(v.$color-primary, $lightness: -8%);
                     transform: translateY(-3px);
-                    box-shadow: 0 6px 20px rgba(color.adjust(variable.$color-primary, $alpha: -0.6), 0.5);
+                    box-shadow: v.$shadow-lg;
                 }
             }
 
             .btnSecondary {
                 background-color: transparent;
-                color: white;
-                border-color: white;
+                color: v.$color-text-light;
+                border-color: v.$color-text-light;
 
                 .arrowIcon {
-                    margin-left: 0.5rem;
-                    transition: transform 0.3s ease;
+                    margin-left: v.$spacing-xs;
+                    transition: transform v.$transition-speed-normal v.$transition-easing;
                 }
 
                 &:hover {
-                    background-color: white;
-                    color: variable.$color-text-primary;
+                    background-color: v.$color-text-light;
+                    color: v.$color-text-primary;
                     transform: translateY(-3px);
                     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 
@@ -109,16 +108,16 @@
         }
 
         .loginPrompt {
-            margin-top: 1rem;
+            margin-top: v.$spacing-xl;
             text-align: center;
-            font-size: 1rem;
-            color: white;
+            font-size: v.$font-size-base;
+            color: v.$color-text-light;
         }
 
         .loginLink {
-            color: variable.$color-primary; // Utilisez votre variable de couleur primaire
+            color: v.$color-primary;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: v.$font-weight-bold;
 
             &:hover {
                 text-decoration: underline;
@@ -127,14 +126,54 @@
     }
 }
 
+// --- Animation (inchangée) ---
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) { // Pour tablettes et mobiles (<= 768px)
+    .heroSection .heroContent {
+        h1 {
+            font-size: 2.8rem; // Titre plus petit
+        }
+        p {
+            font-size: v.$font-size-base; // Paragraphe plus petit
+            margin-bottom: v.$spacing-xl;
+        }
+        .actionButtons {
+            flex-direction: column; // Les boutons passent en colonne
+            align-items: center; // On les centre
+            gap: v.$spacing-md;
+
+            .btn {
+                width: 100%;
+                max-width: 350px; // Pour éviter qu'ils soient trop larges
+            }
+        }
+        .loginPrompt {
+            margin-top: v.$spacing-lg;
+        }
+    }
+}
+
+@media (max-width: v.$breakpoint-sm) { // Pour petits mobiles (<= 576px)
+    .heroSection {
+        padding: v.$spacing-xl v.$spacing-md; // Moins de padding sur les côtés
+    }
+    .heroSection .heroContent {
+        h1 {
+            font-size: 2.2rem; // Titre encore plus petit
+        }
+        .actionButtons .btn {
+            padding: v.$spacing-sm v.$spacing-lg; // Boutons plus compacts
+        }
     }
 }
