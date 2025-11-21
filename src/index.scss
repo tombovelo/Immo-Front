@@ -17,7 +17,7 @@
 }
 
 html {
-  font-size: 13px; // Base pour les unités rem sur desktop
+  font-size: 14px; // Base pour les unités rem sur desktop
 }
 
 body {
@@ -56,13 +56,13 @@ a {
 // Utilisation des variables de breakpoints pour la cohérence
 @media (max-width: styles.$breakpoint-lg) { // 992px
   html {
-    font-size: 12px; // Réduit la base pour les tablettes et grands téléphones
+    font-size: 13px; // Réduit la base pour les tablettes et grands téléphones
   }
 }
 
 @media (max-width: styles.$breakpoint-sm) { // 576px
   html {
-    font-size: 11px; // Réduit encore la base pour les petits téléphones
+    font-size: 12px; // Réduit encore la base pour les petits téléphones
   }
 }
 
@@ -70,12 +70,12 @@ a {
 // Si ces tailles sont récurrentes, envisagez de créer des variables dédiées.
 @media (max-width: 415px) {
   html {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
 @media (max-width: 345px) {
   html {
-    font-size: 9px;
+    font-size: 10px;
   }
 }

@@ -22,7 +22,7 @@
 :global {
   // --- Le conteneur principal du select ---
   .custom-select__control {
-    min-height: 44px; // Hauteur minimale pour l'accessibilité tactile
+    min-height: 40px; // Hauteur minimale pour l'accessibilité tactile
     font-size: v.$font-size-base;
     border: v.$border-width-sm solid v.$color-border;
     border-radius: v.$border-radius-md; // Cohérence avec les autres inputs
@@ -96,7 +96,7 @@
       font-size: v.$font-size-sm;
     }
     .custom-select__control {
-      min-height: 40px;
+      min-height: 30px;
     }
   }
   .error {

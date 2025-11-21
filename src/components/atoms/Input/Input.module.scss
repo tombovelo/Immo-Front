@@ -8,6 +8,7 @@
   // --- Structure et espacement ---
   width: 100%; // Prend toute la largeur disponible
   padding: v.$spacing-xs v.$spacing-sm; // Espacement interne (8px 12px)
+  min-height: 40px; 
 
   // --- Bordure et aspect visuel ---
   border: v.$border-width-sm solid v.$color-border; // Bordure fine et grise
@@ -42,5 +43,13 @@
     background-color: v.$color-disabled; // Fond gris clair pour les champs désactivés
     color: v.$color-text-disabled; // Texte gris clair pour les champs désactivés
     cursor: not-allowed; // Curseur "non autorisé"
+  }
+}
+
+// --- Styles Responsives ---
+@media (max-width: v.$breakpoint-md) {
+  .input {
+    min-height: 33px; // Hauteur minimale sur mobile, pour correspondre au SelectField
+    font-size: v.$font-size-sm; // Cohérence de la taille de police
   }
 }
