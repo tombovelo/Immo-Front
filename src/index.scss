@@ -17,18 +17,25 @@
 }
 
 html {
-  font-size: 14px; // Base pour les unités rem sur desktop
+  font-size: 13px; // Base pour les unités rem sur desktop
 }
 
 body {
   font-family: styles.$font-family-primary;
-  // Dégradé subtil du blanc vers une teinte de la couleur primaire
-  background: linear-gradient(180deg, white 0%, rgba(styles.$color-primary, 0.1) 100%);
   color: styles.$color-text-primary;
   line-height: styles.$line-height-body;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // NOUVEAU STYLE DE FOND
+  background-color: styles.$color-background-light;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(styles.$color-primary, 0.15), transparent 50%),
+    radial-gradient(at 95% 90%, rgba(styles.$color-accent, 0.1), transparent 50%);
+  background-attachment: fixed; // Le fond reste fixe au défilement
 }
+
+
 
 // 3. Style pour le conteneur principal de l'application
 // Ceci, combiné au `margin-top: auto` de votre Footer,
@@ -49,13 +56,13 @@ a {
 // Utilisation des variables de breakpoints pour la cohérence
 @media (max-width: styles.$breakpoint-lg) { // 992px
   html {
-    font-size: 13px; // Réduit la base pour les tablettes et grands téléphones
+    font-size: 12px; // Réduit la base pour les tablettes et grands téléphones
   }
 }
 
 @media (max-width: styles.$breakpoint-sm) { // 576px
   html {
-    font-size: 12px; // Réduit encore la base pour les petits téléphones
+    font-size: 11px; // Réduit encore la base pour les petits téléphones
   }
 }
 
@@ -63,12 +70,12 @@ a {
 // Si ces tailles sont récurrentes, envisagez de créer des variables dédiées.
 @media (max-width: 415px) {
   html {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 345px) {
   html {
-    font-size: 10px;
+    font-size: 9px;
   }
 }

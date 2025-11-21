@@ -142,7 +142,7 @@ export default function EditMaisonForm({ maisonToEdit }) {
     return (
         <div className={styles.twoColumn}>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <h2 className={styles.title}>Modifier la maison #{maisonToEdit.id}</h2>
+                {/* <h2 className={styles.title}>Modifier la maison #{maisonToEdit.id}</h2> */}
 
                 <InputField
                     label="Adresse"

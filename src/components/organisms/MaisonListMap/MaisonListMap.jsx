@@ -116,6 +116,7 @@ export default function MaisonListMap({ maisons, onMapClick, searchMarkerPositio
                 scrollWheelZoom={false}
                 className={styles.mapContainer}
                 // La propriété "key" n'est plus nécessaire ici.
+                
             >
                 <TileLayer
                     key={baseLayer} // On garde cette clé pour changer le fond de carte

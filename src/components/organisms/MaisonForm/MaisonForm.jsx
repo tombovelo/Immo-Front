@@ -149,7 +149,7 @@ export default function MaisonForm() {
     return (
         <div className={styles.twoColumn}>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <h2 className={styles.title}>Ajouter une maison</h2>
+                {/* <h2 className={styles.title}>Ajouter une maison</h2> */}
                 <div className={styles.multiFields}>
                     <InputField
                         label="Adresse"

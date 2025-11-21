@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/userAuth";
 import styles from "./Navbar.module.scss";
@@ -7,102 +7,80 @@ import { FaSignInAlt, FaUserPlus, FaSearch, FaSignOutAlt, FaUserCircle, FaHome }
 import MyNavLink from "../../atoms/NavLink/MyNavLink";
 
 const Navbar = () => {
-  const [showLinks, setShowLinks] = useState(false);
   const { user, logout } = useAuth();
   const role = useRole();
 
-  const handleShowLinks = () => {
-    setShowLinks(!showLinks);
-  };
-
-  // Ferme le menu mobile après un clic sur un lien
-  const closeMobileMenu = () => setShowLinks(false);
-
-  const handleLogout = () => {
-    logout();
-    closeMobileMenu();
-  };
+  const handleLogout = () => logout();
 
   return (
-    <nav className={`${styles.navbar} ${showLinks ? styles.showNavbar : ""}`}>
+    <nav className={styles.navbar}>
       <div className={styles.navbarLogo}>
         {role === 'proprietaire' && user?.urlProfile ? (
-          <Link to="/proprietaire/profile" className={styles.proprietaireInfo} onClick={closeMobileMenu}>
+          <Link to="/proprietaire/profile" className={styles.proprietaireInfo}>
             <img src={user.urlProfile} alt={user.nom} className={styles.profileImage} />
             <span className={styles.proprietaireName}>{user.nom}</span>
           </Link>
         ) : (
-          <Link to="/" className={styles.brandLink} onClick={closeMobileMenu}>
+          <Link to="/" className={styles.brandLink}>
             ImmoProject
           </Link>
         )}
       </div>
 
-      {/* Conteneur pour les liens et l'authentification */}
       <div className={styles.navbarMenuWrapper}>
-        {/* Liens de navigation */}
         <ul className={styles.navbarLinks}>
-          {role === 'proprietaire' && (
-            <>
-              <li className={styles.navbarItem}>
-                <MyNavLink
-                  to="/proprietaire/maisons/table"
-                  icon={FaHome}
-                  variant="link"
-                  onClick={closeMobileMenu}
-                  className={styles.color}
-                >
-                  Maisons
-                </MyNavLink>
-              </li>
-              <li className={styles.navbarItem}>
-                <MyNavLink
-                  to="/proprietaire/profile"
-                  icon={FaUserCircle}
-                  variant="link"
-                  onClick={closeMobileMenu}
-                >
-                  Profil
-                </MyNavLink>
-              </li>
-              <li className={styles.navbarItem}>
-                <MyNavLink
-                  to="#"
-                  icon={FaSignOutAlt}
-                  variant="logoutButton"
-                  onClick={handleLogout}
-                >
-                  Déconnexion
-                </MyNavLink>
-              </li>
-            </>
-          )}
+           {/* Cet espace pousse les icônes à droite */}
         </ul>
 
-        {/* Authentification */}
         <div className={styles.navbarAuth}>
+          {role === 'proprietaire' && (
+            <>
+              <MyNavLink
+                to="/proprietaire/maisons/table"
+                icon={FaHome}
+                variant="link"
+                textColor="white"
+                iconColor="white"
+                className={styles.navbarLink}
+              >
+                Maisons
+              </MyNavLink>
+              <MyNavLink
+                to="/proprietaire/profile"
+                icon={FaUserCircle}
+                variant="link"
+                textColor="white"
+                iconColor="white"
+                className={styles.navbarLink}
+              >
+                Profil
+              </MyNavLink>
+              <MyNavLink
+                to="#"
+                icon={FaSignOutAlt}
+                variant="logoutButton"
+                onClick={handleLogout}
+                textColor="orange"
+              >
+                Déconnexion
+              </MyNavLink>
+            </>
+          )}
           {role === 'user' && (
             <>
-              <MyNavLink to="/register" icon={FaUserPlus} variant="primaryButton" onClick={closeMobileMenu}>
+              <MyNavLink to="/register" textColor="white" icon={FaUserPlus} variant="primaryButton" className={styles.navbarLink}>
                 S'inscrire
               </MyNavLink>
-              <MyNavLink to="/maisons/list" icon={FaSearch} variant="primaryButton" onClick={closeMobileMenu}>
+              <MyNavLink to="/maisons/list" textColor="white" icon={FaSearch} variant="primaryButton" className={styles.navbarLink}>
                 Rech.
               </MyNavLink>
-              <MyNavLink to="/login" icon={FaSignInAlt} variant="primaryButton" onClick={closeMobileMenu}>
+              <MyNavLink to="/login" textColor="white" icon={FaSignInAlt} variant="primaryButton" className={styles.navbarLink}>
                 Connecter
               </MyNavLink>
             </>
           )}
         </div>
       </div>
-
-      {/* Bouton Burger pour mobile */}
-      <button onClick={handleShowLinks} className={styles.navbarBurger} aria-label="Toggle navigation">
-        <span className={styles.burgerBar}></span>
-        <span className={styles.burgerBar}></span>
-        <span className={styles.burgerBar}></span>
-      </button>
     </nav>
   );
 };

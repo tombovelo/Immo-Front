@@ -160,77 +160,35 @@
 // --- Menu Burger (Mobile) ---
 .navbarBurger {
   display: none;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0;
-  z-index: styles.$z-index-modal; // Doit être au-dessus du reste
 }
 
 .burgerBar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: styles.$color-text-light;
-  transition: all styles.$transition-speed-normal styles.$transition-easing;
+  display: none;
 }
 
 // --- Styles Responsives ---
 @media screen and (max-width: styles.$breakpoint-lg) {
+  // On pousse les icônes vers la droite
   .navbarMenuWrapper {
-    position: absolute;
-    top: 80px; // Correspond à la hauteur de la navbar
-    left: 0;
-    background-color: styles.$color-secondary;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    justify-content: flex-end;
   }
 
-  .navbarLinks, .navbarAuth {
-    width: 100%;
-    flex-direction: column;
-    gap: styles.$spacing-xs;
-    font-size: styles.$font-size-sm;
-  }
-  
+  // On cache le conteneur des liens centraux (qui est vide)
   .navbarLinks {
-    margin-bottom: styles.$spacing-md;
+    display: none;
   }
 
-  .navbarItem {
-    width: 100%;
-    text-align: center;
+  // On réduit l'espace entre les icônes
+  .navbarAuth {
+    gap: styles.$spacing-xs;
   }
-  
+
   .navbarLink {
-    display: block;
-    padding: styles.$spacing-md;
-  }
+    padding: styles.$spacing-sm; // Padding carré pour un look "bouton d'icône"
 
-  .navbarBurger {
-    display: block;
-  }
-
-  // --- État ouvert du menu mobile ---
-  .showNavbar {
-    .navbarMenuWrapper {
-      max-height: 500px; // Hauteur suffisante pour le contenu
-      padding: styles.$spacing-md 0;
-    }
-
-    .burgerBar:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .burgerBar:nth-child(2) {
-      opacity: 0;
-    }
-    .burgerBar:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+    // La règle la plus importante : on cache le texte
+    :global(.text) {
+      display: none;
     }
   }
 }

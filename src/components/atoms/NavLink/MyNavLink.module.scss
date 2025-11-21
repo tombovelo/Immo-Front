@@ -1,5 +1,4 @@
-// src/components/molecules/MyNavLink/MyNavLink.module.scss
-
+// c:\Users\sacha\Desktop\DevoirITU\ImmoProject\user-front\src\components\atoms\NavLink\MyNavLink.module.scss
 // 1. Importation des variables globales
 @use '../../../assets/variables' as v;
 @use 'sass:color';
@@ -22,12 +21,6 @@
 .icon {
   flex-shrink: 0;
   // Taille de l'icône (un peu plus petite que le texte)
-  font-size: v.$font-size-lg;
-}
-
-.text {
-  // Couleur du texte par défaut
-  color: v.$color-text-primary;
 }
 
 // --- Variante #1: Style de lien simple (pour "Maisons", "Profil") ---
@@ -85,24 +78,12 @@
   }
 }
 
-// --- Styles Responsives ---
-// Pour les écrans plus petits que le breakpoint 'md' (768px)
-@media (max-width: v.$breakpoint-md) {
-  .navLink {
-    font-size: v.$font-size-sm; // Réduit la taille de la police
-    padding: v.$spacing-xxs v.$spacing-xs; // Réduit le padding
-    gap: v.$spacing-xxs; // Réduit l'espacement entre l'icône et le texte
-  }
+@media screen and (max-width: 900px) {
+    .text {
+      display: none;
+    }
 
-  .icon {
-    font-size: v.$font-size-base; // Réduit la taille de l'icône
-  }
-}
-
-// Pour les écrans très petits (téléphones en mode portrait)
-@media (max-width: v.$breakpoint-sm) {
-  .text {
-    // On peut même cacher le texte sur les très petits écrans si nécessaire
-    display: none;
-  }
+    .icon {
+      font-size: v.$font-size-h2;
+    }
 }
