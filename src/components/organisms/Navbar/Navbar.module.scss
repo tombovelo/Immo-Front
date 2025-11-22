@@ -11,7 +11,7 @@
   padding: 0 styles.$spacing-xl;
   position: sticky;
   top: 0;
-  z-index: styles.$z-index-sticky; // Utilisation d'une variable z-index
+  z-index: styles.$z-index-tooltip; // Utilisation d'une variable z-index
   width: 100%;
   box-sizing: border-box;
   box-shadow: styles.$shadow-sm;
