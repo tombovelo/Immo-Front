@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function LoginForm() {
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("everaldo@1234");
+  const [password, setPassword] = useState("");
   const { loginUser } = useAuth();
 
   const handleSubmit = async (e) => {

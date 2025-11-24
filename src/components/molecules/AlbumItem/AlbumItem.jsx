@@ -68,7 +68,9 @@ export default function AlbumItem({ album, index = 0, onView }) {
     const defaultCover = '/cover-album.jpeg';
 
     const handleViewClick = (e) => {
+
         e.stopPropagation();
+        
         if (role === 'proprietaire') {
             // Pour le propriétaire, on ouvre la modale via la prop onView
             onView(album);
@@ -86,6 +88,7 @@ export default function AlbumItem({ album, index = 0, onView }) {
     };
 
     const handleDeleteClick = async (e) => {
+
         e.stopPropagation();
 
         // 1. Demander une confirmation pour éviter les suppressions accidentelles
