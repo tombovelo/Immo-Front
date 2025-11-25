@@ -6,6 +6,7 @@ import styles from "./EditAlbumForm.module.scss";
 import { toast } from "react-toastify";
 import { updateAlbumAPI } from "../../../services/AlbumService";
 import { albumSchema } from "../../../validation/AlbumValidation";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 export default function EditAlbumForm({ albumToEdit, variant = 'standalone' }) {
 
@@ -57,8 +58,7 @@ export default function EditAlbumForm({ albumToEdit, variant = 'standalone' }) {
                 });
                 setFormErrors(errors);
             } else {
-                toast.error(err.response?.data?.message || "Une erreur est survenue lors de la mise à jour.");
-                console.error(err);
+                handleError(err);
             }
         } finally {
             setIsSubmitting(false);

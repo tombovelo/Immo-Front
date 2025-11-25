@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { getAlbumAPI } from "../../../services/AlbumService";
 import { updatePhotoAPI } from "../../../services/PhotoService";
 import { photoSchema } from "../../../validation/PhotoValidation";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 export default function EditPhotoForm({ photoToEdit }) {
 
@@ -89,8 +90,7 @@ export default function EditPhotoForm({ photoToEdit }) {
                 });
                 setFormErrors(errors);
             } else {
-                toast.error("Une erreur est survenue lors de la mise à jour.");
-                console.error(err); // Pour le débogage
+                handleError(err);
             }
         }
     };

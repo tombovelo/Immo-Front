@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { getProprietaireAPI } from "../../../services/ProprietaireService";
 import { regionsMadagascar } from "../../../constants/location";
 import regionsGeoJSON from "../../../constants/region-mada.geojson.json";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 
 export default function MaisonForm() {
@@ -84,7 +85,6 @@ export default function MaisonForm() {
         if (name === "ville") {
             // Trouver la feature GeoJSON correspondante en utilisant la normalisation
             const normalizedValue = normalizeString(value);
-            console.log(normalizedValue);
             const regionFeature = regionsGeoJSON.features.find((feature) =>
                 normalizeString(feature.properties.shapeName) === normalizedValue
             );
@@ -142,6 +142,8 @@ export default function MaisonForm() {
                     errors[e.path] = e.message;
                 });
                 setFormErrors(errors);
+            } else {
+                handleError(err);
             }
         }
     };

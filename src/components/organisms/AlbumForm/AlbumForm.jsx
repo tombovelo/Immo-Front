@@ -79,7 +79,6 @@ export default function AlbumForm({ maisonId: propMaisonId, onAlbumCreated, vari
                 setFormErrors(errors);
             } else {
                 handleError(err); // Utilise votre gestionnaire d'erreurs
-                toast.error(err.response?.data?.message || "Une erreur est survenue lors de la création de l'album.");
             }
         } finally {
             setIsSubmitting(false); // Réinitialise l'état de soumission

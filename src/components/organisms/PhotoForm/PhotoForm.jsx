@@ -9,6 +9,7 @@ import { getMyHouseAPI } from "../../../services/MaisonService";// Importer l'AP
 import { createPhotoAPI } from "../../../services/PhotoService";
 import { toast } from "react-toastify";
 import { photoSchema } from "../../../validation/PhotoValidation";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 
 export default function PhotoForm({ albumId: propAlbumId, onPhotoCreated, variant = 'standalone' }) {
@@ -133,6 +134,8 @@ export default function PhotoForm({ albumId: propAlbumId, onPhotoCreated, varian
                     errors[e.path] = e.message;
                 });
                 setFormErrors(errors);
+            } else {
+                handleError(err);
             }
         }
     };

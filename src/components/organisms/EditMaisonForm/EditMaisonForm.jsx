@@ -12,6 +12,7 @@ import { updateHouseAPI } from "../../../services/MaisonService";
 import EditMap from "../EditMap/EditMap";
 import { regionsMadagascar } from "../../../constants/location";
 import regionsGeoJSON from "../../../constants/region-mada.geojson.json";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 
 export default function EditMaisonForm({ maisonToEdit }) {
@@ -129,8 +130,7 @@ export default function EditMaisonForm({ maisonToEdit }) {
                 });
                 setFormErrors(errors);
             } else {
-                toast.error(err.response?.data?.message || "Une erreur est survenue lors de la mise à jour.");
-                console.error(err);
+                handleError(err);
             }
         }
     };

@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../../molecules/InputField/InputField";
 import Button from "../../atoms/Button/Button";
 import styles from './EditProprietaireForm.module.scss';
-import { toast } from "react-toastify";
-import { updateMyProfile } from "../../../services/ProprietaireService";
 import { useAuth } from "../../../context/userAuth";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 export default function EditProprietaireForm({ proprietaireToEdit, variant = 'standalone' }) {
 
@@ -79,8 +78,7 @@ export default function EditProprietaireForm({ proprietaireToEdit, variant = 'st
             await updateUser(data);
             
         } catch (err) {
-            toast.error("Une erreur est survenue lors de la mise à jour.");
-            console.error(err);
+            handleError(err);
         }
     };
 

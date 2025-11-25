@@ -5,6 +5,7 @@ import styles from "./RegisterForm.module.scss";
 import { useAuth } from "../../../context/userAuth";
 import { registerSchema } from "../../../validation/RegisterValidation";
 import { Link } from "react-router-dom";
+import { handleError } from "../../../helpers/ErrorHandler";
 
 export default function ProprietaireForm() {
 
@@ -107,6 +108,8 @@ export default function ProprietaireForm() {
                     errors[e.path] = e.message;
                 });
                 setFormErrors(errors);
+            } else {
+                handleError(err);
             }
         }
 
