@@ -1,0 +1,10 @@
+@use '../../assets/variables' as v;
+
+.homePage {
+    max-width: v.$max-width-container;
+    margin: 0 auto;
+    padding: v.$spacing-xl v.$spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-xxl;
+  }

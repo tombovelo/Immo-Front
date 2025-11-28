@@ -35,8 +35,15 @@
   text-align: center;
 }
 
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: styles.$spacing-xs;
+  margin-top: styles.$spacing-md;
+}
+
 .loginPrompt {
-  margin-top: styles.$spacing-xs;
+  margin-top: 0;
   text-align: center;
   font-size: styles.$font-size-sm;
   color: styles.$color-text-secondary;

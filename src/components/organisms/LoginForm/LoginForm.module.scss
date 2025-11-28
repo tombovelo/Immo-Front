@@ -33,8 +33,16 @@
   text-align: center;
 }
 
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-xs;
+  margin-top: v.$spacing-md;
+}
+
 .loginPrompt {
-  margin-top: v.$spacing-xs; // Petit espacement
+  // margin-top: v.$spacing-xs; // Petit espacement
+  margin-top: 0;
   text-align: center;
   font-size: v.$font-size-sm; // Taille de police pour le prompt
   color: v.$color-text-secondary; // Couleur de texte secondaire

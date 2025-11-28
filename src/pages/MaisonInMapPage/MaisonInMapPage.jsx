@@ -3,6 +3,7 @@ import MaisonInMap from '../../components/organisms/MaisonInMap/MaisonInMap';
 import styles from './MaisonInMapPage.module.scss';
 
 export default function MaisonInMapPage() {
+    
     const location = useLocation();
     // location.state peut être null si la page est accédée directement
     const maison = location.state?.maison;

@@ -13,16 +13,15 @@ import TablePageMaisons from "./pages/TablePageMaison/TablePageMaison";
 import ProtectedRoute from "./Route/Route";
 import EditMaisonPage from "./pages/EditMaisonPage/EditeMaisonPage";
 import MaisonPage from "./pages/MaisonPage/MaisonPage";
-// import TablePageAlbum from './pages/TablePageAlbum/TablePageAlbum'
 import AlbumPage from "./pages/AlbumPage/AlbumPage";
 import EditAlbumPage from "./pages/EditAlbumPage/EditAlbumPage";
 import AlbumDetailsPage from "./pages/AlbumDetailsPage/AlbumDetailsPage";
-// import TablePagePhoto from "./pages/TablePagePhoto/TablePagePhoto";
 import PhotoPage from "./pages/PhotoPage/PhotoPage";
 import EditPhotoPage from "./pages/EditPhotoPage/EditPhotoPage";
 import Profile from "./pages/Profile/Profile";
 import EditeProprietairePage from "./pages/EditProprietairePage/EditProfile";
 import MaisonInMapPage from "./pages/MaisonInMapPage/MaisonInMapPage";
+import ActualitePage from "./pages/ActualitePage/ActualitePage";
 
 
 function App() {
@@ -40,6 +39,7 @@ function App() {
           <Route path="/maisons/:id" element={<MaisonDetailsPage/>} />
           <Route path="albums/details/:id" element={<AlbumDetailsPage />} />
           <Route path="/maisons/map" element={<MaisonInMapPage />} />
+          <Route path="/actualites" element={<ActualitePage />} />
         </Route> 
 
         <Route path = "/proprietaire" element={<ProtectedRoute><ProprietaireLayout /></ProtectedRoute>}>
@@ -47,7 +47,6 @@ function App() {
           <Route path="maisons/:id" element={<MaisonDetailsPage/>} />
           <Route path="maisons/edit/:id" element={<EditMaisonPage/>} />
           <Route path="maison" element={<MaisonPage />} />
-          {/* <Route path="albums/table" element={<TablePageAlbum/>} /> */}
           <Route path="album" element={<AlbumPage/>} />
           <Route path="albums/edit/:id" element={<EditAlbumPage/>} />
           <Route path="profile" element={<Profile/>} />

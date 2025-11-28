@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/userAuth";
 import styles from "./Navbar.module.scss";
 import { useRole } from '../../../context/RoleContext';
-import { FaSignInAlt, FaUserPlus, FaSearch, FaSignOutAlt, FaUserCircle, FaHome } from 'react-icons/fa';
+import { FaSignInAlt, FaUserPlus, FaSearch, FaSignOutAlt, FaUserCircle, FaHome, FaNewspaper } from 'react-icons/fa';
 import MyNavLink from "../../atoms/NavLink/MyNavLink";
 
 const Navbar = () => {
@@ -21,15 +21,16 @@ const Navbar = () => {
             <span className={styles.proprietaireName}>{user.nom}</span>
           </Link>
         ) : (
-          <Link to="/" className={styles.brandLink}>
-            ImmoProject
+          <Link to="/" className={styles.proprietaireInfo}>
+            <img src='/logo.png' alt='logo.png' className={styles.profileImage} />
+            <span className={styles.brandLink}>ImmoProject</span>
           </Link>
         )}
       </div>
 
       <div className={styles.navbarMenuWrapper}>
         <ul className={styles.navbarLinks}>
-           {/* Cet espace pousse les icônes à droite */}
+          {/* Cet espace pousse les icônes à droite */}
         </ul>
 
         <div className={styles.navbarAuth}>
@@ -71,8 +72,8 @@ const Navbar = () => {
               <MyNavLink to="/register" textColor="white" icon={FaUserPlus} variant="primaryButton" className={styles.navbarLink}>
                 S'inscrire
               </MyNavLink>
-              <MyNavLink to="/maisons/list" textColor="white" icon={FaSearch} variant="primaryButton" className={styles.navbarLink}>
-                Rech.
+              <MyNavLink to="/actualites" textColor="white" icon={FaNewspaper} variant="primaryButton" className={styles.navbarLink}>
+                Actualités
               </MyNavLink>
               <MyNavLink to="/login" textColor="white" icon={FaSignInAlt} variant="primaryButton" className={styles.navbarLink}>
                 Connecter

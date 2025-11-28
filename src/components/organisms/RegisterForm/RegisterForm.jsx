@@ -117,7 +117,7 @@ export default function ProprietaireForm() {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
-            <h4 className={styles.title}>S'INSCRIRE</h4>
+            {/* <h4 className={styles.title}>S'INSCRIRE</h4> */}
             <InputField
                 label="Nom *"
                 name="nom"
@@ -180,9 +180,14 @@ export default function ProprietaireForm() {
                 error={formErrors["utilisateur.password"]}
             />
             <Button type="submit">Enregistrer</Button>
-            <p className={styles.loginPrompt}>
-                Vous avez déjà un compte ? <Link to="/login" className={styles.loginLink}>Se connecter</Link>
-            </p>
+            <div className={styles.linksContainer}>
+                <p className={styles.loginPrompt}>
+                    Vous avez déjà un compte ? <Link to="/login" className={styles.loginLink}>Se connecter</Link>
+                </p>
+                <p className={styles.loginPrompt}>
+                    <Link to="/" className={styles.loginLink}>Retour à l'accueil</Link>
+                </p>
+            </div>
         </form>
     );
 }

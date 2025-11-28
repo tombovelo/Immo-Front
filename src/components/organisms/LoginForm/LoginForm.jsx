@@ -37,9 +37,14 @@ export default function LoginForm() {
       />
 
       <Button type="submit">Se connecter</Button>
-      <p className={styles.loginPrompt}>
-        Vous n'avez pas encore de compte ? <Link to="/register" className={styles.loginLink}>S'inscrire</Link>
-      </p>
+      <div className={styles.linksContainer}>
+        <p className={styles.loginPrompt}>
+          Vous n'avez pas encore de compte ? <Link to="/register" className={styles.loginLink}>S'inscrire</Link>
+        </p>
+        <p className={styles.loginPrompt}>
+          <Link to="/" className={styles.loginLink}>Retour à l'accueil</Link>
+        </p>
+      </div>
     </form>
   );
 }

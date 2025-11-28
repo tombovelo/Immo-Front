@@ -1,0 +1,167 @@
+@use '../../../assets/variables' as v;
+
+// Hero Section for the large image and search button
+.heroSection {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  background-image: url('/public/acceuil-1.avif');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: v.$color-text-light;
+
+  // Dark overlay for better text readability
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(v.$color-secondary, 0.6);
+  }
+}
+
+.heroContent {
+  position: relative; // To appear above the overlay
+  z-index: 1;
+  padding: v.$spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-lg;
+}
+
+.heroTitle {
+  font-size: v.$font-size-h1;
+  font-weight: v.$font-weight-bold;
+  text-shadow: v.$shadow-md;
+}
+
+.heroSubtitle {
+  font-size: v.$font-size-xl;
+  max-width: v.$max-width-text;
+  text-shadow: v.$shadow-sm;
+}
+
+// Wrapper for the rest of the page content to constrain its width
+.contentWrapper {
+  max-width: v.$max-width-container;
+  margin: 0 auto;
+  padding: v.$spacing-xxl v.$spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-xxl;
+}
+
+.section {
+  width: 100%;
+}
+
+.title {
+  font-size: v.$font-size-h2;
+  font-weight: v.$font-weight-bold;
+  color: v.$color-secondary;
+  margin-bottom: v.$spacing-lg;
+  padding-bottom: v.$spacing-sm;
+  border-bottom: v.$border-width-md solid v.$color-primary;
+  text-align: center;
+}
+
+// --- Styles for the News Carousel Section ---
+
+.carouselContainer {
+  background-color: v.$color-background-light;
+  padding: v.$spacing-xl;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$shadow-md;
+//   overflow: hidden;
+
+  // Customizing react-slick dots
+  :global(.slick-dots) {
+    bottom: -10px;
+    li button:before {
+      font-size: 12px;
+      color: v.$color-secondary;
+      opacity: 0.5;
+      transition: all v.$transition-speed-fast;
+    }
+    li.slick-active button:before {
+      color: v.$color-primary;
+      opacity: 1;
+    }
+  }
+}
+
+// Each slide in the carousel
+.carouselSlide {
+  // We use !important here to safely override inline styles from react-slick
+  display: flex !important;
+  align-items: center;
+  gap: v.$spacing-xl;
+  padding-bottom: v.$spacing-xl; // Space for the dots
+
+  @media (max-width: v.$breakpoint-md) {
+    flex-direction: column;
+    gap: v.$spacing-lg;
+    text-align: center;
+  }
+}
+
+.newsImageContainer {
+  flex: 1;
+  max-width: 600px;
+
+  @media (max-width: v.$breakpoint-md) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.newsImage {
+  width: 100%;
+  max-height: 500px; // Fixed height for consistency
+  border-radius: v.$border-radius-md;
+  object-fit: cover; // Ensures the image covers the area without distortion
+}
+
+.newsContent {
+  flex: 1;
+  font-size: v.$font-size-h3;
+  line-height: v.$line-height-body;
+  color: v.$color-text-secondary;
+  text-align: left;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: v.$breakpoint-md) {
+    text-align: center;
+  }
+}
+
+// --- End of News Section Styles ---
+
+.maisonsGrid {
+  display: grid;
+  gap: v.$spacing-lg;
+  grid-template-columns: 1fr;
+
+  @media (min-width: v.$breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: v.$breakpoint-xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.errorMessage {
+  color: v.$color-error;
+  text-align: center;
+}

@@ -38,12 +38,7 @@ export default function MaisonList() {
       setLoading(true);
       setError("");
       try {
-        const [maisonsData, transactionsData] = await Promise.all([
-          searchHouseAPI(searchParams),
-          getTransactionAPI()
-        ]);
-
-        setMaisons(maisonsData || []);
+        const transactionsData = await getTransactionAPI();
         setTransactions([
           { value: '', label: 'Tout' },
           ...transactionsData.map((option) => ({
@@ -121,7 +116,7 @@ export default function MaisonList() {
         </button>
       </div>
 
-      {loading && <LoadingSpinner message="Chargement des maisons..."/>}
+      {loading && <LoadingSpinner message="Chargement de la page . . ."/>}
       {error && <div className={styles.infoError}>{error}</div>}
       
       {!loading && !error && (

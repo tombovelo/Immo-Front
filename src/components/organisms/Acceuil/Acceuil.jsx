@@ -14,7 +14,7 @@ const Accueil = () => {
                     <div className={styles.actionButtons}>
                         {/* <Link to="/register" className={`${styles.btn} ${styles.btnPrimary}`}>S'inscrire</Link> */}
                         <Link to="/login" className={`${styles.btn} ${styles.btnPrimary}`}>Se connecter</Link>
-                        <Link to="/maisons/list" className={`${styles.btn} ${styles.btnSecondary}`}>
+                        <Link to="/actualites" className={`${styles.btn} ${styles.btnSecondary}`}>
                             Voir nos contenus <FaArrowRight className={styles.arrowIcon} />
                         </Link>
                     </div>
