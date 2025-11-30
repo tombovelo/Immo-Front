@@ -16,6 +16,7 @@ const AddAlbumModal = ({ isOpen, onRequestClose, maisonId, onAlbumCreated }) => 
             className={styles.modal}
             overlayClassName={styles.overlay}
             contentLabel="Ajouter un nouvel album"
+            bodyOpenClassName="body-modal-open"
         >
             <div className={styles.header}>
                 <h2>Ajouter album</h2>

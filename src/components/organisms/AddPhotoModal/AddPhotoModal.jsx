@@ -14,6 +14,7 @@ const AddPhotoModal = ({ isOpen, onRequestClose, albumId, onPhotoCreated }) => {
             className={styles.modal}
             overlayClassName={styles.overlay}
             contentLabel="Ajouter une nouvelle photo"
+            bodyOpenClassName="body-modal-open"
         >
             <div className={styles.header}>
                 <h2>Ajouter une photo</h2>

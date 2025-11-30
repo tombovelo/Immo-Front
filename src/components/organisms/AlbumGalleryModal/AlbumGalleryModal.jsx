@@ -141,6 +141,7 @@ const AlbumGalleryModal = ({ isOpen, onRequestClose, album, onPhotoAdded }) => {
             className={styles.modal}
             overlayClassName={styles.overlay}
             contentLabel={`Galerie de l'album ${currentAlbum.nomAlbum}`}
+            bodyOpenClassName="body-modal-open"
         >
             <div className={styles.header}>
             <div className={styles.headerLeft}>

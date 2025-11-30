@@ -35,6 +35,10 @@ body {
   background-attachment: fixed; // Le fond reste fixe au défilement
 }
 
+body.body-modal-open {
+  overflow: hidden;
+}
+
 
 
 // 3. Style pour le conteneur principal de l'application
