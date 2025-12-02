@@ -12,10 +12,10 @@ export const getProfile = async () => {
     return response.data;
 };
 
-// export const getProprietaireByIdAPI = async (id) => {
-//     const response = await axios.get(`${baseURL}/proprietaires/${id}`);
-//     return response.data;
-// };
+export const getProprietaireByIdAPI = async (id) => {
+    const response = await axios.get(`${baseURL}/proprietaires/${id}`);
+    return response.data;
+};
 
 // export const createProprietaireAPI = async (proprietaireData) => {
 //     const response = await axios.post(`${baseURL}/proprietaires`, proprietaireData);

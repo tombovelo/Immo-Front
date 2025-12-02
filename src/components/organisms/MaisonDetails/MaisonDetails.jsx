@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './MaisonDetails.module.scss';
 import { FaDoorOpen, FaUser, FaPencilAlt, FaImages, FaPhone, FaEnvelope, FaPlusCircle, FaTag } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import IconText from '../../atoms/IconText/IconText';
 import AddAlbumModal from '../AddAlbumModal/AddAlbumModal';
 import AlbumItem from '../../molecules/AlbumItem/AlbumItem';
@@ -65,7 +65,7 @@ const MaisonDetails = ({ maison: maisonProp }) => {
             {/* === CONTENU PRINCIPAL (IMAGE + INFOS CLÉS) === */}
             <div className={styles.mainGrid}>
                 <div className={styles.imageGallery}>
-                <img src={cloudinaryUrl || 'https://via.placeholder.com/800x500'} alt={`Maison à ${adresse}`} className={styles.mainImage} loading="lazy" />
+                    <img src={cloudinaryUrl || 'https://via.placeholder.com/800x500'} alt={`Maison à ${adresse}`} className={styles.mainImage} loading="lazy" />
                     <div className={styles.transactionBadge}><FaTag /> {typeTransaction?.nom}</div>
                 </div>
 
@@ -79,7 +79,7 @@ const MaisonDetails = ({ maison: maisonProp }) => {
                         <div className={styles.description}>
                             <h3>Description</h3>
                             <p className={isDescriptionExpanded ? styles.expanded : ''}>
-                               {maison.description}
+                                {maison.description}
                             </p>
                             <button onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)} className={styles.expandButton}>
                                 {isDescriptionExpanded ? 'Lire moins' : 'Lire la suite'}
@@ -102,7 +102,7 @@ const MaisonDetails = ({ maison: maisonProp }) => {
                         Informations du Propriétaire
                     </IconText>
                     <div className={styles.ownerDetails}>
-                        <p><strong>Nom :</strong> {proprietaire.prenom} {proprietaire.nom}</p>
+                        <p><strong>Nom :</strong> <Link to={`/proprietaires/${proprietaire.id}`}>{proprietaire.prenom} {proprietaire.nom}</Link></p>
                         <p><strong>Téléphone :</strong> <a href={`tel:${proprietaire.telephone}`}>{proprietaire.telephone}</a></p>
                         <p><strong>Email :</strong> <a href={`mailto:${proprietaire.utilisateur?.email}`}>{proprietaire.utilisateur?.email || 'Non renseigné'}</a></p>
                     </div>

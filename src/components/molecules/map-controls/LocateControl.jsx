@@ -33,7 +33,7 @@ const LocateControl = ({ onLocationFound }) => {
 
     const handleLocate = () => {
         // On demande explicitement la haute précision pour utiliser le GPS si disponible
-        map.locate({ enableHighAccuracy: true }); 
+        map.locate({enableHighAccuracy: true }); 
     };
 
     // Ce bouton sera ajouté par-dessus la carte

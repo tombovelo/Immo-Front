@@ -22,6 +22,7 @@ import Profile from "./pages/Profile/Profile";
 import EditeProprietairePage from "./pages/EditProprietairePage/EditProfile";
 import MaisonInMapPage from "./pages/MaisonInMapPage/MaisonInMapPage";
 import ActualitePage from "./pages/ActualitePage/ActualitePage";
+import MaisonProprietairePage from "./pages/MaisonProprietairePage/MaisonProprietairePage";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="albums/details/:id" element={<AlbumDetailsPage />} />
           <Route path="/maisons/map" element={<MaisonInMapPage />} />
           <Route path="/actualites" element={<ActualitePage />} />
+          <Route path="/proprietaires/:id" element={<MaisonProprietairePage />} />
         </Route> 
 
         <Route path = "/proprietaire" element={<ProtectedRoute><ProprietaireLayout /></ProtectedRoute>}>

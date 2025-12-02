@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './ProprietaireDetails.module.scss';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaHome, FaPencilAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import MaisonItem from '../../molecules/MaisonItem/MaisonItem';
 import IconText from '../../atoms/IconText/IconText';
 import { useNavigate } from 'react-router-dom';
-
-
 
 const ProprietaireDetails = ({ proprietaire }) => {
 
@@ -32,9 +29,6 @@ const ProprietaireDetails = ({ proprietaire }) => {
                     </div>
                 </div>
                 <div className={styles.headerActions}>
-                    {/* <Link to={`/admin/proprietaires/edit/${id}`} className={styles.editButton}>
-                        <FaPencilAlt /> Modifier
-                    </Link> */}
                     <IconText icon={<FaPencilAlt />} 
                             className={styles.Button} 
                             iconColor='white' color='white' 
