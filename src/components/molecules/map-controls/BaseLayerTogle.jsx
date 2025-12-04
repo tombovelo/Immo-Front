@@ -6,8 +6,6 @@ const BaseLayerToggle = ({ mapType, setMapType }) => {
 
   const controlDivRef = useRef(null);
 
-  // Empêche les clics sur les boutons de se propager à la carte,
-  // ce qui pourrait déplacer le marqueur.
   useEffect(() => {
     if (controlDivRef.current) {
       L.DomEvent.disableClickPropagation(controlDivRef.current);
